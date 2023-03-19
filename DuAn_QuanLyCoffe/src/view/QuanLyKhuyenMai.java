@@ -4,18 +4,78 @@
  */
 package view;
 
+import Model.GiamGia;
+import Model.GiamGiaChiTiet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import repository.GiamGiaRepository;
+import repository.impl.GiamGiaChiTietRepoImpl;
+import repository.impl.GiamGiaRepoImpl;
+import service.Auth;
+import service.MsgBox;
+import service.SerGiamGia;
+import service.Xdate;
+
 /**
  *
  * @author DELL
  */
 public class QuanLyKhuyenMai extends javax.swing.JPanel {
-
+     DefaultTableModel model = new DefaultTableModel();
+      DefaultTableModel giamgiachitiet = new DefaultTableModel();
+     private GiamGiaRepoImpl daoGG = new GiamGiaRepoImpl();
+     
+             
+    int maGiamGia;
+    Date ngaybd;
+    int row;
+    
     /**
      * Creates new form QuanLyKhuyenMai
      */
     public QuanLyKhuyenMai() {
         initComponents();
+         model = (DefaultTableModel) tblSanphamgiamgia.getModel();
+        fillToTableSPGD();
+        giamgiachitiet = (DefaultTableModel) tblSanPhamgiamchitiet.getModel();
+        jPanel2.setVisible(false);
+//        fillcomboboxEvent();
+        authen();
     }
+       public void authen(){
+        if(Auth.isManager() == false){
+            btnThem.setEnabled(false);
+            btnSua.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btngiahan.setEnabled(false);
+            jButton1.setEnabled(false);
+        }
+    }
+       private void fillcomboboxEvent() {
+        DefaultComboBoxModel cbomodel = (DefaultComboBoxModel) cbohansukien.getModel();
+        cbomodel.removeAllElements();
+        List<GiamGia> list = daoGG.selectALLL();
+        for (GiamGia x : list) {
+            cbomodel.addElement(checkTGian(x.getNgayBD(), x.getNgayKT()) ? "còn hạn" : "hết hạn");
+        }
+    }
+           public int getMaGiamGia() {
+        return maGiamGia;
+    }
+
+    public void setMaGiamGia(int maGiamGia) {
+        this.maGiamGia = maGiamGia;
+    }
+
+    public Date getNgaybd() {
+        return ngaybd;
+    }
+
 
 
     /**
@@ -385,11 +445,40 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblSanPhamgiamchitietMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamgiamchitietMouseReleased
-    
+            int x = tblSanPhamgiamchitiet.rowAtPoint(evt.getPoint());
+        if (x >= 0 && x < tblSanPhamgiamchitiet.getRowCount()) {
+            tblSanPhamgiamchitiet.setRowSelectionInterval(x, x);
+        } else {
+            tblSanPhamgiamchitiet.clearSelection();
+        }
+        int rowindex = tblSanPhamgiamchitiet.getSelectedRow();
+        if (rowindex < 0) {
+            return;
+        }
+        if (evt.isPopupTrigger() && evt.getComponent() instanceof JTable) {
+            jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
     }//GEN-LAST:event_tblSanPhamgiamchitietMouseReleased
 
     private void tblSanphamgiamgiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanphamgiamgiaMouseClicked
-      
+       if (evt.getClickCount() == 2) {
+            row = tblSanphamgiamgia.getSelectedRow();
+            maGiamGia = Integer.parseInt(tblSanphamgiamgia.getValueAt(row, 0).toString());
+            ngaybd = txtdate1.getDate();
+            new ThemSanPhamGiamGiaJDialog(null, true, maGiamGia, ngaybd).setVisible(true);
+            filltableChitiet();
+        } else {
+            try {
+                filltableChitiet();
+                row = tblSanphamgiamgia.getSelectedRow();
+                String magg = tblSanphamgiamgia.getValueAt(row, 0).toString();
+                GiamGia gg = daoGG.selectById(magg);
+                setform(gg);
+                UpdateStatus();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+       }
     }//GEN-LAST:event_tblSanphamgiamgiaMouseClicked
 
     private void tblSanphamgiamgiaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanphamgiamgiaMouseReleased
@@ -398,38 +487,359 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
 
     private void txtTiemKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTiemKiemKeyReleased
         // TODO add your handling code here:
+        search();
     }//GEN-LAST:event_txtTiemKiemKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        
+        if (check() && check2() && checkNull()) {
+            insert();
+        }
+         
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btngiahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngiahanActionPerformed
         // TODO add your handling code here:
+        updateDate();
+        
     }//GEN-LAST:event_btngiahanActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        delete();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        update();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        clear();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
         // TODO add your handling code here:
+        search();
         
     }//GEN-LAST:event_txttimKeyReleased
 
     private void cbohansukienItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbohansukienItemStateChanged
         // TODO add your handling code here:
+        fillToTableSPGD();
     }//GEN-LAST:event_cbohansukienItemStateChanged
+    private GiamGiaChiTietRepoImpl Daoct = new GiamGiaChiTietRepoImpl();
+        private void fillToTableSPGD() {
+        model.setRowCount(0);
+        try {
 
+            List<GiamGia> list = daoGG.selectAll();
+            for (GiamGia g : list) {
 
+                switch (cbohansukien.getSelectedItem().toString()) {
+                    case "còn hạn":
+                        if (checkTGian(g.getNgayBD(), g.getNgayKT()) == true) {
+                            String ten = daonv.selectById(g.getIdnhanvien()).getTenNV();
+                            model.addRow(new Object[]{g.getId_GiamGia(), g.getTenSK(),
+                                ten, g.getNgayBD(), g.getNgayKT(),
+                                checkTGian(g.getNgayBD(), g.getNgayKT()) ? "còn hạn" : "hết hạn"});
+                            lbltenkiendienra.setText("Sự kiện còn thời gian");
+                        }
+                        break;
+                    case "hết hạn":
+                        if (checkTGian(g.getNgayBD(), g.getNgayKT()) == false) {
+                            String ten = daonv.selectById(g.getIdnhanvien()).getTenNV();
+                            model.addRow(new Object[]{g.getId_GiamGia(), g.getTenSK(),
+                                ten, g.getNgayBD(), g.getNgayKT(),
+                                checkTGian(g.getNgayBD(), g.getNgayKT()) ? "còn hạn" : "hết hạn"});
+                            lbltenkiendienra.setText("Sự kiện  thời gian");
+
+                        }
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi hiển thị");
+            e.printStackTrace();
+        }
+    }
+            private boolean checkTGian(Date ngaybd, Date ngaykt) {
+        SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String datenow = simple.format(date);
+        date = Xdate.toDate(datenow, "yyyy-MM-dd");
+        if (date.after(ngaykt)) {
+            return false;
+        } //        else if (date.before(ngaybd)) {
+        //            return false;
+        else;
+        return true;
+    }
+    service.SerGiamGia inserts = new SerGiamGia();
+    service.SerGiamGia updates = new SerGiamGia();
+    service.SerGiamGia deletes = new SerGiamGia();
+    
+      private void insert() {
+        try {
+            if (MsgBox.confirm(this, "bạn có muốn thêm sự kiện này ?")) {
+                inserts.insert(CreateData());
+                this.fillToTableSPGD();
+                MsgBox.alert(this, "Thêm dữ sự kiện thành công");
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm thất bại");
+            e.printStackTrace();
+        }
+    }
+
+    SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");
+
+    private GiamGia getFrom() {
+        GiamGia gg = new GiamGia();
+
+        int rows = tblSanphamgiamgia.getSelectedRow();
+        gg.setId_GiamGia(Integer.parseInt(tblSanphamgiamgia.getValueAt(rows, 0).toString()));
+        gg.setTenSK(txtSukien.getText());
+        gg.setIdnhanvien(Auth.user.getId_Nhanvien());
+        gg.setNgayBD(Xdate.toDate(Xdate.toString(txtdate1.getDate(), "yyyy-MM-dd"), "yyy-MM-dd"));
+        gg.setNgayKT(Xdate.toDate(Xdate.toString(txtdate2.getDate(), "yyyy-MM-dd"), "yyy-MM-dd"));
+        return gg;
+    }
+
+    private GiamGia CreateData() {
+        GiamGia gg = new GiamGia();
+
+        gg.setId_GiamGia(gg.getId_GiamGia());
+        gg.setTenSK(txtSukien.getText());
+        gg.setIdnhanvien(Auth.user.getId_Nhanvien());
+        gg.setNgayBD(Xdate.toDate(Xdate.toString(txtdate1.getDate(), "yyyy-MM-dd"), "yyy-MM-dd"));
+        gg.setNgayKT(Xdate.toDate(Xdate.toString(txtdate2.getDate(), "yyyy-MM-dd"), "yyy-MM-dd"));
+        return gg;
+    }
+
+    private void filltableChitiet() {
+        giamgiachitiet.setRowCount(0);
+        List<GiamGiaChiTiet> list
+                = Daoct.selectbyEvent(tblSanphamgiamgia.getValueAt(tblSanphamgiamgia.getSelectedRow(), 0).toString());
+        for (GiamGiaChiTiet x : list) {
+            giamgiachitiet.addRow(new Object[]{daoSP.selectnameSP(x.getidSP()),
+                daoSP.selectPrice(x.getidSP()),
+                x.getPhantramgiam(), SanPhamGiamGia(x.getidSP(), daoSP.selectPrice(x.getidSP()))});
+        }
+    }
+
+    private void setform(GiamGia gg) {
+
+        txtSukien.setText(tblSanphamgiamgia.getValueAt(row, 1).toString());
+        lblTenNhanVien.setText(tblSanphamgiamgia.getValueAt(row, 2).toString());
+
+        txtdate1.setDate(gg.getNgayBD());
+//        System.out.println(gg.getNgayBD());
+        txtdate2.setDate(gg.getNgayKT());
+    }
+
+    private void clear() {
+        txtdate1.setDate(null);
+        txtdate2.setDate(null);
+        txtSukien.setText(null);
+//        lblTenNhanVien.setText(Auth.user.getTenNV());
+        row = -1;
+        UpdateStatus();
+    }
+
+    private void delete() {
+        row = tblSanphamgiamgia.getSelectedRow();
+        if (MsgBox.confirm(this, "bạn có muốn xóa sự kiện này ?")) {
+            if (row == -1) {
+                MsgBox.alert(this, "không tìm thấy dòng dữ liệu để xóa");
+                return;
+            } else {
+                try {
+
+                    String sukien = tblSanphamgiamgia.getValueAt(row, 0).toString();
+                    daoGG.delete(sukien);
+                    fillToTableSPGD();
+                    clear();
+                    MsgBox.alert(this, "xóa thành công");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "đang có sản phẩm đựơc giảm giá trong sự kiện này");
+                }
+
+            }
+        } else;
+    }
+
+    // sửa sự kiện
+    private void update() {
+        try {
+            if (MsgBox.confirm(this, "bạn có muốn  cập nhập tên sự kiện ?")) {
+                GiamGia gg = getFrom();
+                daoGG.update(gg);
+                fillToTableSPGD();
+                clear();
+                MsgBox.alert(this, "cập nhập sự kiện thành công");
+                System.out.println(gg);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void search() {
+        TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(model);
+        tblSanphamgiamgia.setRowSorter(search);
+        search.setRowFilter(javax.swing.RowFilter.regexFilter(txtTiemKiem.getText()));
+    }
+
+    private void UpdateStatus() {
+        boolean edit = (row >= 0);
+        boolean fist = (row == 0);
+        boolean last = (row == tblSanphamgiamgia.getRowCount() - 1);
+        //
+        btnThem.setEnabled(!edit);
+        btnXoa.setEnabled(edit);
+        btnSua.setEnabled(edit);
+        btngiahan.setEnabled(edit);
+        txtdate1.setEnabled(!edit);
+
+    }
+
+    private void updateDate() {
+        try {
+            row = tblSanphamgiamgia.getSelectedRow();
+            if (MsgBox.confirm(this, "bạn có muốn gia hạn sự kiện này ?")) {
+                if (row == -1) {
+                    MsgBox.alert(this, "không tìm thấy sự kiện cần gia hạn");
+                    return;
+                } else {
+                    GiamGia gg = getFrom();
+                    daoGG.updateDateFinsh(gg);
+                    fillToTableSPGD();
+                    clear();
+                    MsgBox.alert(this, "gia hạn giảm giá thành công");
+                    System.out.println(gg.getNgayKT());
+                }
+            } else;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int SanPhamGiamGia(String masp, int gia) {
+        GiamGiaChiTiet ggct = Daoct.selectbyIDSP(masp);
+        if (ggct == null) {
+            return 0;
+        }
+        GiamGia gg = daoGG.selectByIdss(ggct.getidgiamgia());
+        if (gg == null) {
+            return 0;
+        }
+        try {
+            SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            String datenow = simple.format(date);
+            date = Xdate.toDate(datenow, "yyyy-MM-dd");
+            date = Xdate.toDate(datenow, "yyyy-MM-dd");
+            Date datekt = gg.getNgayKT();
+            Date datebd = gg.getNgayBD();
+
+            float tiengiam = (float) gia - (((float) ggct.getPhantramgiam() / 100) * gia);
+            //System.out.println((float) gia - ((float) ggct.getPhantramgiam()/100) * gia);
+            int tiengiamint = (int) tiengiam;
+            // System.out.println(tiengiamint);
+            String a = tiengiamint + "";
+            //System.out.println(a.length());
+            if (a.length() == 4) {
+                int soThu1 = Integer.parseInt(a.charAt(1) + "");
+                if (soThu1 < 5) {
+                    //System.out.println("heelo");
+                    a = a.substring(0, 1);
+                    //System.out.println(a);
+                    return Integer.parseInt(a + "000");
+                } else {
+                    a = a.substring(0, 1);
+                    tiengiamint = Integer.parseInt(a + "000");
+                    return (int) tiengiamint + 1000;
+                }
+
+            } else if (tiengiam == 0) {
+                return 0;
+            } else {
+//                System.out.println("heelosssss");
+                int soThu2 = Integer.parseInt(a.charAt(2) + "");
+                if (soThu2 < 5) {
+                    a = a.substring(0, 2);;
+                    return Integer.parseInt(a + "000");
+                } else {
+                    a = a.substring(0, 2);
+                    tiengiamint = Integer.parseInt(a + "000");
+                    return (int) tiengiamint + 1000;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /// sửa phần trăm giảm giá\
+    private void updateGiamGia() {
+        try {
+            if (MsgBox.confirm(this, "bạn muốn cập nhập lại giảm giá của sản phẩm ?")) {
+                int rows = tblSanPhamgiamchitiet.getSelectedRow();
+                int cotgiamgia = Integer.parseInt(tblSanPhamgiamchitiet.getValueAt(rows, 2).toString());
+                if (cotgiamgia < 0 || cotgiamgia > 100) {
+                    MsgBox.alert(this, "giảm không được nhập lớn hơn 0 hoặc 100");
+                    return;
+                }
+                for (int i = 0; i < tblSanPhamgiamchitiet.getRowCount(); i++) {
+
+                    int phantram = Integer.parseInt(tblSanPhamgiamchitiet.getValueAt(i, 2).toString());
+                    String idsanpham = daoSP.selectNameByID(tblSanPhamgiamchitiet.getValueAt(i, 0).toString());
+                    Daoct.update(phantram, idsanpham);
+                    System.out.println("adsddddddddd" + phantram + "ddddd" + idsanpham);
+                }
+
+                MsgBox.alert(this, "Đã cập nhập lại mức giảm giá thành công");
+                filltableChitiet();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean check() {
+        Date a = txtdate1.getDate();
+        Date b = txtdate2.getDate();
+        if (a.getTime() > b.getTime()) {
+            MsgBox.alert(this, "Ngày trước phải nhỏ hơn ngày sau");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean check2() {
+       
+        if (daoGG.selectByIdSK(txtSukien.getText()) == null) {
+            return true;
+        }
+         else {
+            MsgBox.alert(this, "Tên sự kiện không được trùng");
+            return false;
+        }
+    }
+
+    private boolean checkNull() {
+        if (txtSukien.getText().isEmpty() == true) {
+            MsgBox.alert(this, "Không được để trống tên sự kiện!!!");
+            return false;
+        }
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
@@ -458,3 +868,4 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
     private javax.swing.JTextField txttim;
     // End of variables declaration//GEN-END:variables
 }
+

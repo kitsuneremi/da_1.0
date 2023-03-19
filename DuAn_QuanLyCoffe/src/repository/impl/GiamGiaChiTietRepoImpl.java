@@ -15,7 +15,7 @@ import repository.SQLCollection;
  *
  * @author User1
  */
-public class GiamGiaChiTietRepo implements GiamGiaCTRepository{
+public class GiamGiaChiTietRepoImpl implements GiamGiaCTRepository{
         String insert = "insert dbo.Giamgiachitiet values(?,?,?)";
     String select_All = "select * from Giamgiachitiet";
     String delete = "delete from GIAMGIACHITIET where  ID_Sanpham = ?";
