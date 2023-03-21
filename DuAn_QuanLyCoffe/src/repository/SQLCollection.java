@@ -7,7 +7,7 @@ package repository;
 import java.sql.*;
 public class SQLCollection {
    static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-   static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=UPCOFFEE";
+   static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=DB_DuAn1";
    static String user ="sa";// đây là tài khoản, ở đây mình sẽ đổi thành admin
    static String password ="12345";// đây là mật khẩu
 

@@ -157,35 +157,20 @@ INSERT dbo.SanPham VALUES ('SP9',N'Sữa Milo',9000,'DV1','LSP5',1,N'') -- Sư�
 INSERT dbo.SanPham VALUES ('SP10',N'TH True Milk',9000,'DV1','LSP5',1,N'') -- Sữa
 go
 --Nhanvien
-INSERT dbo.NhanVien VALUES('NV1',N'Đào Gia Phong',1,'2000/10/11',N'Hà Nội',N'giaphong@gmail.com','0123456789','giaphong','123456',1, 1,N'')
-INSERT dbo.NhanVien VALUES('NV2',N'Dương Văn Quốc',1,'2002/04/30',N'Hà Nội',N'duong.quoc304@gmail.com','0123456789','duongquoc','123456',1, 1,N'')
-INSERT dbo.NhanVien VALUES('NV3',N'Lương Văn Sơn',1,'2000/10/11',N'Hà Nội',N'luongvanson@gmail.com','0123456789','son','123456',1, 1,N'')
-INSERT dbo.NhanVien VALUES('NV4',N'Phạm Đức Hoàn',1,'1995/10/11',N'Hà Nội',N'phamduchoan@gmail.com','0123456789','hoan','123456',1, 1,N'')
-INSERT dbo.NhanVien VALUES('NV5',N'Nhân Viên A',0,'2004/10/11',N'Hà Nội',N'nhanviena@gmail.com','0123456789','nhanviena','123456',0, 1,N'')
+INSERT dbo.NhanVien VALUES('NV1',N'Nguyễn Ngọc Minh',1,'2003/07/28',N'Hà Nội',N'minhnn@gamil.com','0123456789','ngocminh','123456',1, 1,N'')
+INSERT dbo.NhanVien VALUES('NV2',N'Nguyễn Đức Lộc',1,'2003/10/11',N'Hà Nội',N'locnd@gmail.com','0123456789','ducloc','123456',1, 1,N'')
+INSERT dbo.NhanVien VALUES('NV3',N'Trần Ngọc Huy',1,'2003/10/11',N'Hà Nội',N'hhuytn@gmail.com','0123456789','ngochuy','123456',1, 1,N'')
+INSERT dbo.NhanVien VALUES('NV4',N'Nguyễn Trung Anh',1,'2003/10/11',N'Hà Nội',N'anhnt@gmail.com','0123456789','trunganh','123456',1, 1,N'')
+INSERT dbo.NhanVien VALUES('NV5',N'Nguyễn Hữu Bình',1,'2003/10/11',N'Hà Nội',N'binhnh@gmail.com','0123456789','huubinh','123456',1, 1,N'')
+INSERT dbo.NhanVien VALUES('NV6',N'Hoàng Việt Dũng',1,'2003/10/11',N'Hà Nội',N'dunghv@gmail.com','0123456789','vietdung','123456',1, 1,N'')
+
 go
 --Giam
 INSERT dbo.GiamGia VALUES(N'Noel','NV1',GETDATE(),GETDATE())
 INSERT dbo.GiamGia VALUES(N'Event','NV1','2002/10/11','2002/10/11')
 INSERT dbo.GiamGia VALUES(N'Khai trương','NV1',GETDATE(),GETDATE())
 go
---Giam chi tiết
---INSERT dbo.Giamgiachitiet VALUES(1,'SP1',20)
---INSERT dbo.Giamgiachitiet VALUES(2,'SP2',10)
---INSERT dbo.Giamgiachitiet VALUES(3,'SP3',30)
 
---Ban
---INSERT dbo.Ban VALUES(0,1,1,2)--TRang thai = 1 la mang ban su dung, Hoatdong = 1 la ban trong =0 la ban dang co nguoi
---INSERT dbo.Ban VALUES(15,0,1,2)
---SELECT * FROM dbo.Ban WHERE Trangthai = 1
---DELETE FROM dbo.HoaDon
---UPDATE dbo.Ban SET Hoatdong = 1 WHERE ID_Ban = 0
---HoaDon
---select*from HoaDon
---select*from HoaDonChiTiet
---INSERT dbo.HoaDon VALUES ('NV1',GETDATE(),1,1) --Trangthai = 1 la hoatdong, Trangthai = 0 la huydon
---INSERT dbo.HoaDon VALUES ('NV1',GETDATE(),1,0) --TTThanhtoan = 1 la da thanh toan = 0 chua thanh toan
---INSERT dbo.HoaDon VALUES ('NV1',GETDATE(),0,0) --
---SELECT * FROM dbo.HoaDon where Trangthai = 1 AND TTThanhtoan = 0'
 select * from hoadon
 GO 
 CREATE PROC chuyendon (@mahd int)
