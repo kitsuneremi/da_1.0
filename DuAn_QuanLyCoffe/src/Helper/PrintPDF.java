@@ -1,7 +1,7 @@
 package Helper;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Hoadon;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Chunk;
@@ -34,8 +34,8 @@ import java.util.Locale;
  */
 public class PrintPDF {
 
-    HoaDonDAO hddao = new HoaDonDAO();
-    BanChiTietDAO bctdao = new BanChiTietDAO();
+    HoaDonRepoImpl hddao = new HoaDonRepoImpl();
+    BanChiTietRepoImpl bctdao = new BanChiTietRepoImpl();
     Locale vn = new Locale("vi", "VN");
 
     //NumberFormat nbf = 

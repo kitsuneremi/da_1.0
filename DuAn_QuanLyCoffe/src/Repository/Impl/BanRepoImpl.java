@@ -7,16 +7,16 @@ package Repository.Impl;
 
 import Model.Ban;
 import Helper.JDBCHeper;
-import Repository.InterfaceBan;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import Repository.RepoBan;
 //sua ban
 /**
  *
  * @author HP
  */
-public class BanDao implements InterfaceBan{
+public class BanRepoImpl implements RepoBan{
     String INSERT_SQL = "INSERT dbo.Ban VALUES(?,?,?,?)";
     String UPDATE_SQL = "UPDATE dbo.Ban SET Soluongcho = ?, Trangthai = ?, Hoatdong = ? WHERE ID_Ban = ?";
     String UPDATE_SQL_TRANGTHAI = "UPDATE dbo.Ban SET Trangthai = 1 WHERE ID_Ban = ?";//ban su dung ngoai quan (xóa)

@@ -1,6 +1,6 @@
 package View;
 
-import Repository.Impl.HoadonchitietDAO;
+import Repository.Impl.HoadonchitietRepoImpl;
 import Model.HoaDonChiTiet;
 import javax.swing.JOptionPane;
 
@@ -140,7 +140,7 @@ public class LydohuySanPhamJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtLydo;
     // End of variables declaration//GEN-END:variables
-    HoadonchitietDAO hdctdao = new HoadonchitietDAO();
+    HoadonchitietRepoImpl hdctdao = new HoadonchitietRepoImpl();
 
     public void capnhapLydo() {
         HoaDonChiTiet hdld = hoadonct;

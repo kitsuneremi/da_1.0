@@ -5,11 +5,11 @@
  */
 package View;
 
-import Repository.Impl.ChiTietGiamGiaDao;
-import Repository.Impl.DaoGiamGia;
-import Repository.Impl.DonViSanPhamDao;
-import Repository.Impl.LoaiSanPhamDao;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.ChiTietGiamGiaRepoImpl;
+import Repository.Impl.GiamGiaRepoImpl;
+import Repository.Impl.DonViSanPhamRepoImpl;
+import Repository.Impl.LoaiSanPhamRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Model.GiamGiaChiTiet;
 import Model.SanPham;
 import Model.GiamGia;
@@ -31,9 +31,9 @@ import javax.swing.text.html.parser.DTDConstants;
  */
 public class ThemSanPhamGiamGiaJDialog extends javax.swing.JDialog {
 
-    SanPhamDao daoSP = new SanPhamDao();
-    LoaiSanPhamDao daoLSP = new LoaiSanPhamDao();
-    DonViSanPhamDao daoDV = new DonViSanPhamDao();
+    SanPhamRepoImpl daoSP = new SanPhamRepoImpl();
+    LoaiSanPhamRepoImpl daoLSP = new LoaiSanPhamRepoImpl();
+    DonViSanPhamRepoImpl daoDV = new DonViSanPhamRepoImpl();
 
     DefaultTableModel model = new DefaultTableModel();
     static int magg;
@@ -249,9 +249,9 @@ public class ThemSanPhamGiamGiaJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtGiam;
     // End of variables declaration//GEN-END:variables
 
-    ChiTietGiamGiaDao dao = new ChiTietGiamGiaDao();
+    ChiTietGiamGiaRepoImpl dao = new ChiTietGiamGiaRepoImpl();
     int row;
-    DaoGiamGia daogg = new DaoGiamGia();
+    GiamGiaRepoImpl daogg = new GiamGiaRepoImpl();
 
     private void fillToTableSP() {
         model.setRowCount(0);

@@ -1,7 +1,7 @@
 
 package View;
 
-import Repository.Impl.BanDao;
+import Repository.Impl.BanRepoImpl;
 import Model.Ban;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -148,7 +148,7 @@ public class ThemBanJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_lblThoatMouseClicked
-    BanDao banDao = new BanDao();
+    BanRepoImpl banDao = new BanRepoImpl();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (txtBanso.getText().equals("")) {

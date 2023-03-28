@@ -5,7 +5,7 @@
  */
 package View;
 
-import Repository.Impl.BanDao;
+import Repository.Impl.BanRepoImpl;
 import Model.Ban;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -262,7 +262,7 @@ boolean status = true;
     private javax.swing.JRadioButton rdoBanao;
     private javax.swing.JTextField txtSocho;
     // End of variables declaration//GEN-END:variables
-BanDao banDao = new BanDao();
+BanRepoImpl banDao = new BanRepoImpl();
 public void filltocbo(){
     DefaultComboBoxModel model = (DefaultComboBoxModel) cboBanso.getModel();
     model.removeAllElements();

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author HP
  */
-public interface InterfaceNhanVien {
+public interface RepoNhanVien {
     abstract public void insert(NhanVien Entity);
 
     abstract public void update(NhanVien Entity);

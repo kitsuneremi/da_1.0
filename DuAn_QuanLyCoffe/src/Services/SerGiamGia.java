@@ -4,7 +4,7 @@
  */
 package Services;
 
-import Repository.Impl.DaoGiamGia;
+import Repository.Impl.GiamGiaRepoImpl;
 import Model.GiamGia;
 
 /**
@@ -13,7 +13,7 @@ import Model.GiamGia;
  */
 public class SerGiamGia {
 
-    DaoGiamGia dao = new DaoGiamGia();
+    GiamGiaRepoImpl dao = new GiamGiaRepoImpl();
 
     public void insert(GiamGia gg) {
         dao.insert(gg);

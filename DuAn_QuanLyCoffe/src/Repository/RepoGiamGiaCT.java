@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author top1z
  */
-public interface InterfaceGiamGiaCT {
+public interface RepoGiamGiaCT {
     abstract public void insert(GiamGiaChiTiet sale);
     abstract public void update(int phantramGiam,String idsanpham);
     abstract public void delete(String id);

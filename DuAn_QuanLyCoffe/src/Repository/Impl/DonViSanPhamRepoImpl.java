@@ -6,14 +6,14 @@ package Repository.Impl;
 import Model.DonViSanPham;
 import java.util.*;
 import Helper.JDBCHeper;
-import Repository.InterfaceDonViSanPham;
 import java.sql.ResultSet;
+import Repository.RepoDonViSanPham;
 
 /**
  *
  * @author Admin
  */
-public class DonViSanPhamDao implements InterfaceDonViSanPham{
+public class DonViSanPhamRepoImpl implements RepoDonViSanPham{
     
     String insert = "insert DonViSanPham(ID_DonviSP, TenDonvi,Kichthuoc,ThemTien) values (?,?,?,?)";
     String selectAll ="select * from DonViSanPham";

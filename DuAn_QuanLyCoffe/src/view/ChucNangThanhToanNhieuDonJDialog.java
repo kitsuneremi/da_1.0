@@ -1,9 +1,9 @@
 
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.Hoadon;
@@ -386,9 +386,9 @@ public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lbltienthoi;
     private javax.swing.JTextField txtTienKhachtra;
     // End of variables declaration//GEN-END:variables
-BanDao DAOBAN = new BanDao();
-    HoaDonDAO DAOHD = new HoaDonDAO();
-    BanChiTietDAO DAObct = new BanChiTietDAO();
+BanRepoImpl DAOBAN = new BanRepoImpl();
+    HoaDonRepoImpl DAOHD = new HoaDonRepoImpl();
+    BanChiTietRepoImpl DAObct = new BanChiTietRepoImpl();
 
     public void filltocbo() {
         resetList();

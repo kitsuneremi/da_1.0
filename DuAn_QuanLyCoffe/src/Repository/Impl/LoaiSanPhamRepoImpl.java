@@ -9,12 +9,12 @@ import Model.*;
 import java.util.*;
 import java.sql.ResultSet;
 import Helper.JDBCHeper;
-import Repository.InterfaceLoaiSanPham;
+import Repository.RepoLoaiSanPham;
 /**
  *
  * @author Admin
  */
-public class LoaiSanPhamDao implements InterfaceLoaiSanPham{
+public class LoaiSanPhamRepoImpl implements RepoLoaiSanPham{
     
     String insert = "insert LoaiSanPham(ID_LoaiSP,Tenloai) values(?,?)";
     String selectAll = "select * from LoaiSanPham";

@@ -9,15 +9,15 @@ import Model.NhanVien;
 import Model.GiamGia;
 import java.util.List;
 import Helper.JDBCHeper;
-import Repository.InterfaceGiamGia;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import Repository.RepoGiamGia;
 
 /**
  *
  * @author Admin
  */
-public class DaoGiamGia implements InterfaceGiamGia {
+public class GiamGiaRepoImpl implements RepoGiamGia {
 
     String INSERY_SQL = "insert  dbo.GiamGia values(?,?,?,?)";
     String UPDATE_SQL = "update GiamGia set Tensukien=? where Id_GiamGia=?";

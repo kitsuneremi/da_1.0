@@ -5,7 +5,7 @@
  */
 package View;
 
-import Repository.Impl.NhanVienDAO;
+import Repository.Impl.NhanVienRepoImpl;
 import Helper.*;
 
 /**
@@ -28,7 +28,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         }
     }
 
-    NhanVienDAO dao = new NhanVienDAO();
+    NhanVienRepoImpl dao = new NhanVienRepoImpl();
 
     /**
      * This method is called from within the constructor to initialize the form.

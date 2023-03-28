@@ -1,9 +1,9 @@
 
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.Hoadon;
@@ -193,9 +193,9 @@ Boolean status = true;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMaBan;
     // End of variables declaration//GEN-END:variables
-BanDao DAOban = new BanDao();
-BanChiTietDAO DAObct = new BanChiTietDAO();
-HoaDonDAO DAOhd = new HoaDonDAO();
+BanRepoImpl DAOban = new BanRepoImpl();
+BanChiTietRepoImpl DAObct = new BanChiTietRepoImpl();
+HoaDonRepoImpl DAOhd = new HoaDonRepoImpl();
 
 public void cnGopBan(){
     Ban ban = DAOban.selectById(idtable);

@@ -1,6 +1,6 @@
 package View;
 
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Hoadon;
 import javax.swing.JOptionPane;
 
@@ -166,7 +166,7 @@ public class LydoHoaDonHuyJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtLydo;
     // End of variables declaration//GEN-END:variables
-HoaDonDAO hdDAO = new HoaDonDAO();
+HoaDonRepoImpl hdDAO = new HoaDonRepoImpl();
 
     public void capnhatlydo() {
         Hoadon hoadon = hds;

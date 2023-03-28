@@ -3,9 +3,9 @@ package Helper;
 
 
 //import DAO.BanChitietDAO;
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.ThongKeDao;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.ThongKeRepoImpl;
 import Model.BanChiTiet;
 import Model.Hoadon;
 import com.itextpdf.text.BaseColor;
@@ -36,8 +36,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class PrintThongKe {
-    HoaDonDAO hddao = new HoaDonDAO();
-    BanChiTietDAO bctdao = new BanChiTietDAO();
+    HoaDonRepoImpl hddao = new HoaDonRepoImpl();
+    BanChiTietRepoImpl bctdao = new BanChiTietRepoImpl();
     
     public void xuatpdf_ngay(DefaultTableModel model,DefaultTableModel model1){
         

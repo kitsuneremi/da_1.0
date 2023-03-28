@@ -30,7 +30,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author sonlu
  */
-public class ThongKeDao {
+public class ThongKeRepoImpl {
     String sql_doanhthutong_ngay_label = "select sum(h.TongGia)as N'Tổng Tiền1' from HoaDon d join HoaDonChiTiet h \n" +
 "           on h.ID_HoaDon=d.ID_Hoadon  join SanPham s on h.ID_SanPham=s.ID_Sanpham where d.Trangthai=1 and h.TTthanhtoan=1 and d.TTThanhtoan=1 and DAY(Ngaytao)=day(getdate())\n";
     String sql_tongdonban_ngay_label = "select COUNT(*) as soluong from HoaDon where Trangthai=1 and TTThanhtoan=1 and DAY(Ngaytao)=day(getdate())";

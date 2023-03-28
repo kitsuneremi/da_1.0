@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author HP
  */
-public interface InterfaceBan {
+public interface RepoBan {
     abstract public void insert(Ban Entity);
 
     abstract public void update(Ban Entity);

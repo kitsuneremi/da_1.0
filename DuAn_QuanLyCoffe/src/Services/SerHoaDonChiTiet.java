@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package Services;
-import Repository.Impl.SanPhamDao;
-import Repository.Impl.ChiTietGiamGiaDao;
-import Repository.Impl.DaoGiamGia;
-import Repository.Impl.DonViSanPhamDao;
+import Repository.Impl.SanPhamRepoImpl;
+import Repository.Impl.ChiTietGiamGiaRepoImpl;
+import Repository.Impl.GiamGiaRepoImpl;
+import Repository.Impl.DonViSanPhamRepoImpl;
 import Model.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import View.HoadonchitietJDialog;
-import Repository.Impl.HoadonchitietDAO;
+import Repository.Impl.HoadonchitietRepoImpl;
 import Model.DonViSanPham;
 import Model.GiamGiaChiTiet;
 import Model.Hoadon;
@@ -28,9 +28,9 @@ import java.util.Locale;
  */
 public class SerHoaDonChiTiet {
     Locale vn = new Locale("vi", "VN");
-     HoadonchitietDAO dao=new HoadonchitietDAO();
-     DaoGiamGia DAOGG = new DaoGiamGia();
-    ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
+     HoadonchitietRepoImpl dao=new HoadonchitietRepoImpl();
+     GiamGiaRepoImpl DAOGG = new GiamGiaRepoImpl();
+    ChiTietGiamGiaRepoImpl DAOGGCT = new ChiTietGiamGiaRepoImpl();
       public void filltotablehoadonchitiet(int a){
        List<HoaDonChiTiet> list = new ArrayList<>();
         DefaultTableModel model=(DefaultTableModel) HoadonchitietJDialog.tblHoaDonChiTiet.getModel();
@@ -58,10 +58,10 @@ public class SerHoaDonChiTiet {
        }
     }
      public int GiaTheoSize(String masp){
-          DaoGiamGia DAOGG = new DaoGiamGia();
-          ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
-            SanPhamDao DAOSP = new SanPhamDao();
-            DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
+          GiamGiaRepoImpl DAOGG = new GiamGiaRepoImpl();
+          ChiTietGiamGiaRepoImpl DAOGGCT = new ChiTietGiamGiaRepoImpl();
+            SanPhamRepoImpl DAOSP = new SanPhamRepoImpl();
+            DonViSanPhamRepoImpl DAODVSP = new DonViSanPhamRepoImpl();
         GiamGiaChiTiet ggct = DAOGGCT.selectbyIDSP(masp);
          SanPham sp = new SanPham();
          DonViSanPham dvdu = new DonViSanPham();

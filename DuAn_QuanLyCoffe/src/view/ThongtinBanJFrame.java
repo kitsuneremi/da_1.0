@@ -1,9 +1,9 @@
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.HoadonchitietDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.HoadonchitietRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.Hoadon;
@@ -159,10 +159,10 @@ public class ThongtinBanJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblthoigiantaodon;
     private javax.swing.JLabel lbltrangthaidon;
     // End of variables declaration//GEN-END:variables
-    BanChiTietDAO banctdao = new BanChiTietDAO();
-    BanDao bandao = new BanDao();
-    HoaDonDAO hddao = new HoaDonDAO();
-    HoadonchitietDAO hdctDAO = new HoadonchitietDAO();
+    BanChiTietRepoImpl banctdao = new BanChiTietRepoImpl();
+    BanRepoImpl bandao = new BanRepoImpl();
+    HoaDonRepoImpl hddao = new HoaDonRepoImpl();
+    HoadonchitietRepoImpl hdctDAO = new HoadonchitietRepoImpl();
 
     public void setinfor() {
         Ban ban = bandao.selectById(idban);

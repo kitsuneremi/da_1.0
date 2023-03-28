@@ -1,11 +1,11 @@
 package View;
 
-import Repository.Impl.BanDao;
-import Repository.Impl.ChiTietGiamGiaDao;
-import Repository.Impl.DaoGiamGia;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.HoadonchitietDAO;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.ChiTietGiamGiaRepoImpl;
+import Repository.Impl.GiamGiaRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.HoadonchitietRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Model.GiamGiaChiTiet;
 import Model.HoaDonChiTiet;
 import Model.SanPham;
@@ -20,8 +20,8 @@ import java.util.List;
 public class SuaSoLuongSanPhamHDCTJDialog extends javax.swing.JDialog {
     static String MASP;
     static int MAHOADON;
-     BanDao DAOBAN = new BanDao();
-     HoaDonDAO hdd = new HoaDonDAO();
+     BanRepoImpl DAOBAN = new BanRepoImpl();
+     HoaDonRepoImpl hdd = new HoaDonRepoImpl();
     public SuaSoLuongSanPhamHDCTJDialog(java.awt.Frame parent, boolean modal, String masp, int MAHD) {
         super(parent, modal);
         initComponents();
@@ -155,8 +155,8 @@ public class SuaSoLuongSanPhamHDCTJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-SanPhamDao DAOSP = new SanPhamDao();
-    HoadonchitietDAO HDCT = new HoadonchitietDAO();
+SanPhamRepoImpl DAOSP = new SanPhamRepoImpl();
+    HoadonchitietRepoImpl HDCT = new HoadonchitietRepoImpl();
     private void btnXacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacnhanActionPerformed
         // TODO add your handling code here:
         if (checknumber()) {
@@ -265,8 +265,8 @@ public boolean checknumber() {
         }
         return false;
     }
-    DaoGiamGia DAOGG = new DaoGiamGia();
-    ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
+    GiamGiaRepoImpl DAOGG = new GiamGiaRepoImpl();
+    ChiTietGiamGiaRepoImpl DAOGGCT = new ChiTietGiamGiaRepoImpl();
 
     public int SanPhamGiamGia(String masp, int gia) {
         GiamGiaChiTiet ggct = DAOGGCT.selectbyIDSP(masp);

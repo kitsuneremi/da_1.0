@@ -12,7 +12,7 @@ import java.util.List;
  * @author Admin
  */
 
-public interface InterfaceSanPham {
+public interface RepoSanPham {
     
     abstract public void insert(SanPham sp);
     

@@ -3,16 +3,16 @@ package Repository.Impl;
 
 import Model.BanChiTiet;
 import Helper.JDBCHeper;
-import Repository.InterfaceBanchitiet;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import Repository.RepoBanchitiet;
 
 /**
  *
  * @author HP
  */
-public class BanChiTietDAO implements InterfaceBanchitiet{
+public class BanChiTietRepoImpl implements RepoBanchitiet{
     String INSERT_SQL = "INSERT dbo.BanChiTiet VALUES(?,?,?,?)";
     String UPDATE_SQL = "UPDATE dbo.BanChiTiet SET ID_Ban = ? WHERE ID_Hoadon = ?";
     String DELETE_SQL = "DELETE dbo.BanChiTiet WHERE ID_Ban = ?";

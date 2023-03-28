@@ -6,7 +6,7 @@ package View;
  * and open the template in the editor.
  */
 import Services.SerNhanVien;
-import Repository.Impl.NhanVienDAO;
+import Repository.Impl.NhanVienRepoImpl;
 import Model.NhanVien;
 import Helper.Auth;
 import Helper.Xdate;
@@ -31,7 +31,7 @@ import java.util.regex.*;
  */
 public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
 
-    NhanVienDAO dao = new NhanVienDAO();
+    NhanVienRepoImpl dao = new NhanVienRepoImpl();
     int row = -1;
     JFileChooser fileChooser = new JFileChooser("C:\\Users\\admin\\Desktop\\DuAn1-QuanLyUpCofffee\\logos");
 

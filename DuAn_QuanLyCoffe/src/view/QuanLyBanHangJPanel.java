@@ -1,15 +1,15 @@
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.ChiTietGiamGiaDao;
-import Repository.Impl.DaoGiamGia;
-import Repository.Impl.DonViSanPhamDao;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.HoadonchitietDAO;
-import Repository.Impl.LoaiSanPhamDao;
-import Repository.Impl.NhanVienDAO;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.ChiTietGiamGiaRepoImpl;
+import Repository.Impl.GiamGiaRepoImpl;
+import Repository.Impl.DonViSanPhamRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.HoadonchitietRepoImpl;
+import Repository.Impl.LoaiSanPhamRepoImpl;
+import Repository.Impl.NhanVienRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Helper.Auth;
 import Model.Ban;
 import Model.BanChiTiet;
@@ -1170,14 +1170,14 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txttienThoi;
     // End of variables declaration//GEN-END:variables
 
-    BanDao DAOBAN = new BanDao();
-    SanPhamDao DAOSP = new SanPhamDao();
-    LoaiSanPhamDao DAOLSP = new LoaiSanPhamDao();
-    DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
-    HoaDonDAO DAOHOADON = new HoaDonDAO();
-    HoadonchitietDAO DAOHDCHITIET = new HoadonchitietDAO();
-    BanChiTietDAO DAOBanCT = new BanChiTietDAO();
-    NhanVienDAO DAONV = new NhanVienDAO();
+    BanRepoImpl DAOBAN = new BanRepoImpl();
+    SanPhamRepoImpl DAOSP = new SanPhamRepoImpl();
+    LoaiSanPhamRepoImpl DAOLSP = new LoaiSanPhamRepoImpl();
+    DonViSanPhamRepoImpl DAODVSP = new DonViSanPhamRepoImpl();
+    HoaDonRepoImpl DAOHOADON = new HoaDonRepoImpl();
+    HoadonchitietRepoImpl DAOHDCHITIET = new HoadonchitietRepoImpl();
+    BanChiTietRepoImpl DAOBanCT = new BanChiTietRepoImpl();
+    NhanVienRepoImpl DAONV = new NhanVienRepoImpl();
 
     HashMap<JButton, Ban> hmap = new HashMap<>();//laays theo key button
     //HashMap<Ban, JButton> hmapbutton = new HashMap<>();
@@ -1549,8 +1549,8 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         }
     }
     
-    DaoGiamGia DAOGG = new DaoGiamGia();
-    ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
+    GiamGiaRepoImpl DAOGG = new GiamGiaRepoImpl();
+    ChiTietGiamGiaRepoImpl DAOGGCT = new ChiTietGiamGiaRepoImpl();
     public int GiaTheoSize(String masp){
    
         GiamGiaChiTiet ggct = DAOGGCT.selectbyIDSP(masp);

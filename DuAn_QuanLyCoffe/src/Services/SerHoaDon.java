@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import View.QuanLyHoaDonJPanel;
 import java.util.ArrayList;
 import java.util.List;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.HoaDonRepoImpl;
 import Helper.Auth;
 import java.util.Date;
 import java.util.Locale;
@@ -22,7 +22,7 @@ import java.text.NumberFormat;
  */
 public class SerHoaDon {
 
-    HoaDonDAO dao = new HoaDonDAO();
+    HoaDonRepoImpl dao = new HoaDonRepoImpl();
     Locale vn = new Locale("vi", "VN");
     public void filltotablehoadon() {
         List<Hoadon> list = new ArrayList<>();

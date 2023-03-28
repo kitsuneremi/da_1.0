@@ -5,11 +5,11 @@
  */
 package View;
 
-import Repository.Impl.HoadonchitietDAO;
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.HoadonchitietRepoImpl;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.Hoadon;
@@ -556,7 +556,7 @@ public class ChucNangTachDonJDialog extends javax.swing.JDialog {
         }
         dispose();
     }//GEN-LAST:event_btnXedonActionPerformed
-    BanDao DAOban = new BanDao();
+    BanRepoImpl DAOban = new BanRepoImpl();
     private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
         // TODO add your handling code here:
         filltoTABLEhiendau();
@@ -627,10 +627,10 @@ public class ChucNangTachDonJDialog extends javax.swing.JDialog {
     private javax.swing.JTable tblHDchitiet1;
     // End of variables declaration//GEN-END:variables
     
-    HoadonchitietDAO DAOhdct = new HoadonchitietDAO();
-    HoaDonDAO DAOHD = new HoaDonDAO();
-    SanPhamDao DAPSP = new SanPhamDao();
-    BanChiTietDAO DAObanct = new BanChiTietDAO();
+    HoadonchitietRepoImpl DAOhdct = new HoadonchitietRepoImpl();
+    HoaDonRepoImpl DAOHD = new HoaDonRepoImpl();
+    SanPhamRepoImpl DAPSP = new SanPhamRepoImpl();
+    BanChiTietRepoImpl DAObanct = new BanChiTietRepoImpl();
     List<HoaDonChiTiet> listbctduocXe = new ArrayList<>();
     List<HoaDonChiTiet> listbctgoc;
 

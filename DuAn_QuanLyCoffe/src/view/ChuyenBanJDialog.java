@@ -5,9 +5,9 @@
  */
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.Hoadon;
@@ -212,9 +212,9 @@ boolean status = true;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblban;
     // End of variables declaration//GEN-END:variables
-BanDao DAOBAN = new BanDao();
-BanChiTietDAO DAOBANCT = new BanChiTietDAO();
-HoaDonDAO DAOhd = new HoaDonDAO();
+BanRepoImpl DAOBAN = new BanRepoImpl();
+BanChiTietRepoImpl DAOBANCT = new BanChiTietRepoImpl();
+HoaDonRepoImpl DAOhd = new HoaDonRepoImpl();
 public void filltoBan(){
     DefaultComboBoxModel model = (DefaultComboBoxModel) cboBan.getModel();
     model.removeAllElements();

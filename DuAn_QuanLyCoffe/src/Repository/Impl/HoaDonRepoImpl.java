@@ -7,17 +7,17 @@ package Repository.Impl;
 
 import Model.Hoadon;
 import Helper.JDBCHeper;
-import Repository.InterfaceHoadon;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import Repository.RepoHoadon;
 
 /**
  *
  * @author HP
  */
-public class HoaDonDAO implements InterfaceHoadon {
+public class HoaDonRepoImpl implements RepoHoadon {
 
     String INSERT_SQL = "INSERT dbo.HoaDon VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     String UPDATE_SQL_TrangThai = "UPDATE dbo.HoaDon SET Trangthai = ? WHERE ID_Hoadon = ?";

@@ -4,7 +4,7 @@
  */
 package View;
 
-import Repository.Impl.LoaiSanPhamDao;
+import Repository.Impl.LoaiSanPhamRepoImpl;
 import Model.*;
 
 import java.awt.Color;
@@ -21,7 +21,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
     /**
      * Creates new form QLDoUongJDialog
      */
-    LoaiSanPhamDao daolsp = new LoaiSanPhamDao();
+    LoaiSanPhamRepoImpl daolsp = new LoaiSanPhamRepoImpl();
     int row;
     
     public QLDoUongJDialog(java.awt.Frame parent, boolean modal) {

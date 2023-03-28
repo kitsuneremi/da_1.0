@@ -8,16 +8,16 @@ package Repository.Impl;
 import Model.*;
 import Model.GiamGia;
 import Helper.*;
-import Repository.InterfaceGiamGiaCT;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import Repository.RepoGiamGiaCT;
 
 /**
  *
  * @author top1z
  */
-public class ChiTietGiamGiaDao implements InterfaceGiamGiaCT {
+public class ChiTietGiamGiaRepoImpl implements RepoGiamGiaCT {
 
     String insert = "insert dbo.Giamgiachitiet values(?,?,?)";
     String select_All = "select * from Giamgiachitiet";

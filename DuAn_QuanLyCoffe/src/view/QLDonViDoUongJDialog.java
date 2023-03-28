@@ -4,7 +4,7 @@
  */
 package View;
 
-import Repository.Impl.DonViSanPhamDao;
+import Repository.Impl.DonViSanPhamRepoImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -21,7 +21,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
     /**
      * Creates new form QLDonViDoUongJDialog
      */
-    DonViSanPhamDao dao = new DonViSanPhamDao();
+    DonViSanPhamRepoImpl dao = new DonViSanPhamRepoImpl();
     int row;
     public QLDonViDoUongJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

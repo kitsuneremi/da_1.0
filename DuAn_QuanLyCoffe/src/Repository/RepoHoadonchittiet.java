@@ -12,7 +12,7 @@ import Model.SanPham;
  *
  * @author HP
  */
-public interface InterfaceHoadonchittiet {
+public interface RepoHoadonchittiet {
     abstract public void insert(HoaDonChiTiet Entity);
 
     abstract public void update_TT(HoaDonChiTiet Entity);

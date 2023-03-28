@@ -5,13 +5,13 @@
  */
 package View;
 
-import Repository.Impl.BanDao;
-import Repository.Impl.ChiTietGiamGiaDao;
-import Repository.Impl.DaoGiamGia;
-import Repository.Impl.DonViSanPhamDao;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.HoadonchitietDAO;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.ChiTietGiamGiaRepoImpl;
+import Repository.Impl.GiamGiaRepoImpl;
+import Repository.Impl.DonViSanPhamRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.HoadonchitietRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Model.DonViSanPham;
 import Model.GiamGiaChiTiet;
 import Model.HoaDonChiTiet;
@@ -36,15 +36,15 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
      */
     static String MASP;
     static int MAHOADON;
-    DonViSanPhamDao daodv = new DonViSanPhamDao();
+    DonViSanPhamRepoImpl daodv = new DonViSanPhamRepoImpl();
     List<DonViSanPham> listdv;
-    DaoGiamGia DAOGG = new DaoGiamGia();
-    ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
-    SanPhamDao DAOSP = new SanPhamDao();
-    DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
-    BanDao DAOBAN = new BanDao();
-    HoaDonDAO hdd = new HoaDonDAO();
-    HoadonchitietDAO HDCT = new HoadonchitietDAO();
+    GiamGiaRepoImpl DAOGG = new GiamGiaRepoImpl();
+    ChiTietGiamGiaRepoImpl DAOGGCT = new ChiTietGiamGiaRepoImpl();
+    SanPhamRepoImpl DAOSP = new SanPhamRepoImpl();
+    DonViSanPhamRepoImpl DAODVSP = new DonViSanPhamRepoImpl();
+    BanRepoImpl DAOBAN = new BanRepoImpl();
+    HoaDonRepoImpl hdd = new HoaDonRepoImpl();
+    HoadonchitietRepoImpl HDCT = new HoadonchitietRepoImpl();
     public NhapsoluongSanPhamJDialog(java.awt.Frame parent, boolean modal,String masp, int MAHD) {
         super(parent, modal);
         initComponents();
@@ -205,7 +205,7 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    HoadonchitietDAO DAOHDCT = new HoadonchitietDAO();
+    HoadonchitietRepoImpl DAOHDCT = new HoadonchitietRepoImpl();
     private void btnNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapActionPerformed
         // TODO add your handling code here:
         if (checknumber()) return;
@@ -311,10 +311,10 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     
     public int GiaTheoSize(String masp){
-//          DaoGiamGia DAOGG = new DaoGiamGia();
-//            ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
-//            SanPhamDao DAOSP = new SanPhamDao();
-//            DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
+//          GiamGiaRepoImpl DAOGG = new GiamGiaRepoImpl();
+//            ChiTietGiamGiaRepoImpl DAOGGCT = new ChiTietGiamGiaRepoImpl();
+//            SanPhamRepoImpl DAOSP = new SanPhamRepoImpl();
+//            DonViSanPhamRepoImpl DAODVSP = new DonViSanPhamRepoImpl();
         GiamGiaChiTiet ggct = DAOGGCT.selectbyIDSP(masp);
         SanPham sp = new SanPham();
         DonViSanPham dvdu = new DonViSanPham();

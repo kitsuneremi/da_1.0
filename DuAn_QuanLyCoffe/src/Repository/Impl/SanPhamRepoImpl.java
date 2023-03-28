@@ -6,15 +6,15 @@ package Repository.Impl;
 
 import Helper.JDBCHeper;
 import Model.SanPham;
-import Repository.InterfaceSanPham;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
+import Repository.RepoSanPham;
 /**
  *
  * @author Admin
  */
-public class SanPhamDao implements InterfaceSanPham{
+public class SanPhamRepoImpl implements RepoSanPham{
     
    String insert = "insert into dbo.SanPham(ID_Sanpham,TenSP,Gia,ID_DonviSP,ID_LoaiSP,Trangthai,Hinh) values(?,?,?,?,?,?,?)";
 //String insert = "insert into dbo.SanPham(ID_Sanpham,TenSP,Gia,ID_DonviSP,ID_LoaiSP,Trangthai,Hinh) values(?,?,?,DV1,?,?,?)";

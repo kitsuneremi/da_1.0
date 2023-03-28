@@ -6,10 +6,10 @@
 package View;
 
 import Services.SerGiamGia;
-import Repository.Impl.ChiTietGiamGiaDao;
-import Repository.Impl.DaoGiamGia;
-import Repository.Impl.NhanVienDAO;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.ChiTietGiamGiaRepoImpl;
+import Repository.Impl.GiamGiaRepoImpl;
+import Repository.Impl.NhanVienRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Model.GiamGiaChiTiet;
 import Model.SanPham;
 import Model.GiamGia;
@@ -32,9 +32,9 @@ import javax.swing.table.TableRowSorter;
  */
 public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
 
-    SanPhamDao daoSP = new SanPhamDao();
-    DaoGiamGia daoGG = new DaoGiamGia();
-    NhanVienDAO daonv = new NhanVienDAO();
+    SanPhamRepoImpl daoSP = new SanPhamRepoImpl();
+    GiamGiaRepoImpl daoGG = new GiamGiaRepoImpl();
+    NhanVienRepoImpl daonv = new NhanVienRepoImpl();
     DefaultTableModel model = new DefaultTableModel();
     int maGiamGia;
     Date ngaybd;
@@ -605,7 +605,7 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser txtdate2;
     private javax.swing.JTextField txttim;
     // End of variables declaration//GEN-END:variables
-    ChiTietGiamGiaDao Daoct = new ChiTietGiamGiaDao();
+    ChiTietGiamGiaRepoImpl Daoct = new ChiTietGiamGiaRepoImpl();
 
     private void fillToTableSPGD() {
         model.setRowCount(0);

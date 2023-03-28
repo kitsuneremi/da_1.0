@@ -5,9 +5,9 @@
  */
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.Hoadon;
@@ -215,9 +215,9 @@ static String dayNow;
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
-    HoaDonDAO DAOHOADON = new HoaDonDAO();
-    BanDao DAOBAN = new BanDao();
-    BanChiTietDAO DAOBanCT = new BanChiTietDAO();
+    HoaDonRepoImpl DAOHOADON = new HoaDonRepoImpl();
+    BanRepoImpl DAOBAN = new BanRepoImpl();
+    BanChiTietRepoImpl DAOBanCT = new BanChiTietRepoImpl();
     private void btnLmoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLmoiActionPerformed
         // TODO add your handling code here:
         clear();

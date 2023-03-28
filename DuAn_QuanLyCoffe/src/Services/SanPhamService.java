@@ -4,13 +4,13 @@
  */
 package Services;
 import Model.SanPham;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.SanPhamRepoImpl;
 /**
  *
  * @author Admin
  */
 public class SanPhamService {
-    SanPhamDao dao = new SanPhamDao();
+    SanPhamRepoImpl dao = new SanPhamRepoImpl();
 
     public void insert(SanPham sp) {
         dao.insert(sp);

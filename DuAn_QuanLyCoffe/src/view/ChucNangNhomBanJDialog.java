@@ -1,7 +1,7 @@
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
 import Helper.Xdate;
@@ -157,7 +157,7 @@ public class ChucNangNhomBanJDialog extends javax.swing.JDialog {
         //status = false;
         dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
-    BanChiTietDAO DAObanct = new BanChiTietDAO();
+    BanChiTietRepoImpl DAObanct = new BanChiTietRepoImpl();
 
     //boolean status = true;
     private void btngopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngopActionPerformed
@@ -237,7 +237,7 @@ public class ChucNangNhomBanJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblBanchinh;
     private javax.swing.JLabel lblMaHD;
     // End of variables declaration//GEN-END:variables
-BanDao DAOban = new BanDao();
+BanRepoImpl DAOban = new BanRepoImpl();
 
     public void filltocbo() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboban.getModel();

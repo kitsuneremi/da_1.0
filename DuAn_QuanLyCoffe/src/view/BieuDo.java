@@ -5,7 +5,7 @@
  */
 package View;
 
-import Repository.Impl.ThongKeDao;
+import Repository.Impl.ThongKeRepoImpl;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -160,14 +160,14 @@ public class BieuDo extends javax.swing.JFrame {
 
     private void cbochonngayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbochonngayItemStateChanged
       if(cbochonngay.getSelectedIndex()==0){
-          ThongKeDao tk=new ThongKeDao();
+          ThongKeRepoImpl tk=new ThongKeRepoImpl();
 //           jPanel4.removeAll();
 //          jPanel5.removeAll();
         tk.setDataToChart1_thang(jPanel4 );
         tk.setDataToChart2_thang(jPanel5);
       }
       if(cbochonngay.getSelectedIndex()==1){
-          ThongKeDao tk=new ThongKeDao();
+          ThongKeRepoImpl tk=new ThongKeRepoImpl();
 //          jPanel4.removeAll();
 //          jPanel5.removeAll();
         tk.setDataToChart1_nam(jPanel4);
@@ -193,7 +193,7 @@ public class BieuDo extends javax.swing.JFrame {
               return;
                     
        }
-          ThongKeDao tk=new ThongKeDao();
+          ThongKeRepoImpl tk=new ThongKeRepoImpl();
 
         tk.setDataToChart1_find(jPanel4 ,a,b);
         tk.setDataToChart2_find(jPanel5,a,b);

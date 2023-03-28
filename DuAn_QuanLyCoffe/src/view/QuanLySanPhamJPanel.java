@@ -4,9 +4,9 @@
  */
 package View;
 
-import Repository.Impl.LoaiSanPhamDao;
-import Repository.Impl.SanPhamDao;
-import Repository.Impl.DonViSanPhamDao;
+import Repository.Impl.LoaiSanPhamRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
+import Repository.Impl.DonViSanPhamRepoImpl;
 import Helper.MsgBox;
 import Helper.Ximages;
 import Helper.Auth;
@@ -36,14 +36,14 @@ import java.util.Locale;
 public class QuanLySanPhamJPanel extends javax.swing.JPanel {
 
     Locale vn = new Locale("vi", "VN");
-    SanPhamDao DAOSP = new SanPhamDao();
-    LoaiSanPhamDao daolsp = new LoaiSanPhamDao();
+    SanPhamRepoImpl DAOSP = new SanPhamRepoImpl();
+    LoaiSanPhamRepoImpl daolsp = new LoaiSanPhamRepoImpl();
     int row;
     DefaultTableModel model = new DefaultTableModel();
     DefaultTableModel modelspkd = new DefaultTableModel();
-    DonViSanPhamDao daodv = new DonViSanPhamDao();
+    DonViSanPhamRepoImpl daodv = new DonViSanPhamRepoImpl();
     List<DonViSanPham> listdv;
-    LoaiSanPhamDao dao = new LoaiSanPhamDao();
+    LoaiSanPhamRepoImpl dao = new LoaiSanPhamRepoImpl();
     List<LoaiSanPham> listlsp;
 
     /**

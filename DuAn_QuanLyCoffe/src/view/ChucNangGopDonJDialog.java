@@ -1,9 +1,9 @@
 package View;
 
-import Repository.Impl.BanChiTietDAO;
-import Repository.Impl.BanDao;
-import Repository.Impl.HoaDonDAO;
-import Repository.Impl.HoadonchitietDAO;
+import Repository.Impl.BanChiTietRepoImpl;
+import Repository.Impl.BanRepoImpl;
+import Repository.Impl.HoaDonRepoImpl;
+import Repository.Impl.HoadonchitietRepoImpl;
 import Model.BanChiTiet;
 import Model.Hoadon;
 import Model.HoaDonChiTiet;
@@ -122,10 +122,10 @@ boolean status = true;
         status = false;
         dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
-    HoadonchitietDAO DAOhdct = new HoadonchitietDAO();
-    BanChiTietDAO DAOBanCT = new BanChiTietDAO();
-    BanDao DAOBAN = new BanDao();
-    HoaDonDAO DAOHD = new HoaDonDAO();
+    HoadonchitietRepoImpl DAOhdct = new HoadonchitietRepoImpl();
+    BanChiTietRepoImpl DAOBanCT = new BanChiTietRepoImpl();
+    BanRepoImpl DAOBAN = new BanRepoImpl();
+    HoaDonRepoImpl DAOHD = new HoaDonRepoImpl();
     private void btnGopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGopActionPerformed
         // TODO add your handling code here:
         Hoadon hd = DAOHD.selectById(hoadon.getIdHoaDon());
@@ -231,7 +231,7 @@ boolean status = true;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMadon;
     // End of variables declaration//GEN-END:variables
-HoaDonDAO DAOhd = new HoaDonDAO();
+HoaDonRepoImpl DAOhd = new HoaDonRepoImpl();
 
     public void fillcbo() {
 

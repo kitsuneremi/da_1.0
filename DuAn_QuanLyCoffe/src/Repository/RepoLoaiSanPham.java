@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface InterfaceLoaiSanPham {
+public interface RepoLoaiSanPham {
     abstract public void insert(LoaiSanPham lsp);
     
     abstract public void update(LoaiSanPham lsp);

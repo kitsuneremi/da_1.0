@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author HP
  */
-public interface InterfaceHoadon {
+public interface RepoHoadon {
     abstract public void insert(Hoadon Entity);
 
     abstract public void updateThanhToan(Hoadon Entity);

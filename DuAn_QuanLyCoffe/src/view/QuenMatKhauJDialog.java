@@ -5,7 +5,7 @@
  */
 package View;
 
-import Repository.Impl.NhanVienDAO;
+import Repository.Impl.NhanVienRepoImpl;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -286,7 +286,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
    
-    NhanVienDAO daonv = new NhanVienDAO();
+    NhanVienRepoImpl daonv = new NhanVienRepoImpl();
 
     private boolean checkmail() {
         String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";

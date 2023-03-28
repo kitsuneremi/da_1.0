@@ -5,7 +5,7 @@
  */
 package View;
 
-import Repository.Impl.NhanVienDAO;
+import Repository.Impl.NhanVienRepoImpl;
 import Model.*;
 import Helper.Auth;
 import Helper.MsgBox;
@@ -30,7 +30,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         
     }
 
-    NhanVienDAO dao = new NhanVienDAO();
+    NhanVienRepoImpl dao = new NhanVienRepoImpl();
     private Pattern pattern;
     /**
      * This method is called from within the constructor to initialize the form.

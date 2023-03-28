@@ -1,7 +1,7 @@
 package View;
 
-import Repository.Impl.HoadonchitietDAO;
-import Repository.Impl.SanPhamDao;
+import Repository.Impl.HoadonchitietRepoImpl;
+import Repository.Impl.SanPhamRepoImpl;
 import Model.HoaDonChiTiet;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -249,8 +249,8 @@ public class ChucNangTachSLSPJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblSoluong;
     private javax.swing.JLabel lblTenSp;
     // End of variables declaration//GEN-END:variables
-HoadonchitietDAO DAOhdct = new HoadonchitietDAO();
-    SanPhamDao DAOSanpham = new SanPhamDao();
+HoadonchitietRepoImpl DAOhdct = new HoadonchitietRepoImpl();
+    SanPhamRepoImpl DAOSanpham = new SanPhamRepoImpl();
 
     public void filltocboSL() {
         HoaDonChiTiet hdct = DAOhdct.selectById(idhdcu, idsp);

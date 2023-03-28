@@ -6,13 +6,13 @@
 package View;
 
 import java.text.NumberFormat;
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Hoadon;
 import Model.NhanVien;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import org.jfree.data.category.DefaultCategoryDataset;
-import Repository.Impl.ThongKeDao;
+import Repository.Impl.ThongKeRepoImpl;
 import Helper.PrintThongKe;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.BaseFont;
@@ -46,7 +46,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class MainThongKeJPanel extends javax.swing.JPanel {
 
     DefaultTableModel dtm;
-    ThongKeDao sv = new ThongKeDao();
+    ThongKeRepoImpl sv = new ThongKeRepoImpl();
     NhanVien nv = new NhanVien();
 
     /**

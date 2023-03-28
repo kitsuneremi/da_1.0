@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface InterfaceGiamGia {
+public interface RepoGiamGia {
     abstract public void insert(GiamGia Entity);
 
     abstract public void update(GiamGia Entity);

@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface InterfaceDonViSanPham {
+public interface RepoDonViSanPham {
     abstract public void insert(DonViSanPham dv);
     abstract public void update(DonViSanPham dv);
     abstract public void delete(String id);

@@ -1,6 +1,6 @@
 package View;
 
-import Repository.Impl.HoaDonDAO;
+import Repository.Impl.HoaDonRepoImpl;
 import Model.Hoadon;
 import javax.swing.JOptionPane;
 
@@ -190,7 +190,7 @@ public class SuaThongTinKhachhangJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
-    HoaDonDAO daohd = new HoaDonDAO();
+    HoaDonRepoImpl daohd = new HoaDonRepoImpl();
     private void btnCapNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhapActionPerformed
         // TODO add your handling code here:
         if (checknull()) {

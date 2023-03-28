@@ -9,15 +9,15 @@ import Model.HoaDonChiTiet;
 import Helper.JDBCHeper;
 import java.sql.ResultSet;
 import Model.SanPham;
-import Repository.InterfaceHoadonchittiet;
 import java.util.ArrayList;
 import java.util.List;
+import Repository.RepoHoadonchittiet;
 
 /**
  *
  * @author HP
  */
-public class HoadonchitietDAO implements InterfaceHoadonchittiet {
+public class HoadonchitietRepoImpl implements RepoHoadonchittiet {
 
     String INSERT_SQL = "INSERT dbo.HoaDonChiTiet VALUES (?,?,?,?,?,?,?,?)";
     String UPDATE_SQL_TrangThai = "UPDATE dbo.HoaDonChiTiet SET TTthanhtoan = ?  WHERE ID_HoaDon = ? AND ID_SanPham = ?";

@@ -7,16 +7,16 @@ package Repository.Impl;
 
 import Model.NhanVien;
 import Helper.JDBCHeper;
-import Repository.InterfaceNhanVien;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import Repository.RepoNhanVien;
 
 /**
  * @author Admin
  */
-public class NhanVienDAO implements InterfaceNhanVien {
+public class NhanVienRepoImpl implements RepoNhanVien {
 
     String INSERT_SQL = "INSERT dbo.NhanVien VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE NhanVien set TenNV = ?,Gender = ?,Ngaysinh = ?,Diachi = ?,Email = ?,SDT=?, Username = ?,Pass=?,Vaitro = ?,Trangthai = ?,Hinh = ? where ID_Nhanvien = ?";
