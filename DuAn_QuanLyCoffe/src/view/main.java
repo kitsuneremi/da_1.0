@@ -1,7 +1,9 @@
-package view;
+package View;
 
+import Helper.Auth;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -10,8 +12,19 @@ public class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         setLocationRelativeTo(null);
+        //showPanel(new QuanLySanPhamJPanel());
+//        new DangnhapJDialog(this, true).setVisible(true);
+        
+        if(Auth.isLogin() == true){
+            lblNameNV.setText(Auth.user.getTenNV());
+        }else{
+            new DangnhapJDialog(this, true).setVisible(true);
+            lblNameNV.setText(Auth.user.getTenNV());
+        }
         setExtendedState(this.MAXIMIZED_BOTH);
-        showPanel(new QuanLyBanHang());
+        setColor(lblTrangchu);
+        setColorJpanel(pnTrangChu);
+         showPanel(new TrangchuJPanel());
     }
 
     @SuppressWarnings("unchecked")
@@ -65,17 +78,17 @@ public class main extends javax.swing.JFrame {
         jPopupMenu1.add(mnThoat);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("COFFEE88");
+        setTitle("UPCOFFEE - Cà Phê Thượng Hạng Việt Nam");
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel4.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel4.setBackground(new java.awt.Color(41, 93, 157));
         jPanel4.setToolTipText("");
         jPanel4.setPreferredSize(new java.awt.Dimension(260, 780));
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
-        pnTrangChu.setBackground(new java.awt.Color(102, 255, 102));
+        pnTrangChu.setBackground(new java.awt.Color(41, 93, 157));
         pnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnTrangChuMouseClicked(evt);
@@ -94,7 +107,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnTrangChuLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblTrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         pnTrangChuLayout.setVerticalGroup(
             pnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +119,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnTrangChu);
 
-        pnBanHang.setBackground(new java.awt.Color(102, 255, 102));
+        pnBanHang.setBackground(new java.awt.Color(41, 93, 157));
         pnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnBanHangMouseClicked(evt);
@@ -125,7 +138,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnBanHangLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(lblBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         pnBanHangLayout.setVerticalGroup(
             pnBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +150,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnBanHang);
 
-        pnSanPham.setBackground(new java.awt.Color(102, 255, 102));
+        pnSanPham.setBackground(new java.awt.Color(41, 93, 157));
         pnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnSanPhamMouseClicked(evt);
@@ -156,7 +169,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnSanPhamLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(lblSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         pnSanPhamLayout.setVerticalGroup(
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +181,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnSanPham);
 
-        pnHoaDon.setBackground(new java.awt.Color(102, 255, 102));
+        pnHoaDon.setBackground(new java.awt.Color(41, 93, 157));
         pnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnHoaDonMouseClicked(evt);
@@ -187,7 +200,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnHoaDonLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(lblHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         pnHoaDonLayout.setVerticalGroup(
             pnHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +212,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnHoaDon);
 
-        pnNhanVien.setBackground(new java.awt.Color(102, 255, 102));
+        pnNhanVien.setBackground(new java.awt.Color(41, 93, 157));
         pnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnNhanVienMouseClicked(evt);
@@ -218,7 +231,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnNhanVienLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(lblNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         pnNhanVienLayout.setVerticalGroup(
             pnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +243,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnNhanVien);
 
-        pnThongke.setBackground(new java.awt.Color(102, 255, 102));
+        pnThongke.setBackground(new java.awt.Color(41, 93, 157));
         pnThongke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnThongkeMouseClicked(evt);
@@ -249,7 +262,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnThongkeLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         pnThongkeLayout.setVerticalGroup(
             pnThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +274,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnThongke);
 
-        pnGiagia.setBackground(new java.awt.Color(102, 255, 102));
+        pnGiagia.setBackground(new java.awt.Color(41, 93, 157));
         pnGiagia.setPreferredSize(new java.awt.Dimension(260, 86));
         pnGiagia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -280,7 +293,7 @@ public class main extends javax.swing.JFrame {
             pnGiagiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnGiagiaLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(lblGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addComponent(lblGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnGiagiaLayout.setVerticalGroup(
@@ -297,9 +310,8 @@ public class main extends javax.swing.JFrame {
         lblNameNV.setForeground(new java.awt.Color(255, 255, 255));
         lblNameNV.setText("Wellcome Here!");
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel2.setBackground(new java.awt.Color(41, 93, 157));
 
-        jLabel3.setBackground(new java.awt.Color(0, 102, 0));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/use.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -325,7 +337,7 @@ public class main extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,7 +397,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblSanPham);
         resetColor(lblThongke);
         resetColor(lblGiamGia);
-//        showPanel(new Trangchu());
+        showPanel(new TrangchuJPanel());
     }//GEN-LAST:event_pnTrangChuMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
@@ -403,7 +415,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblNhanVien);
         resetColor(lblTrangchu);
         resetColor(lblThongke);
-        showPanel(new QuanLySanPham());
+        showPanel(new QuanLySanPhamJPanel());
     }//GEN-LAST:event_pnSanPhamMouseClicked
 
     private void pnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnNhanVienMouseClicked
@@ -421,7 +433,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblSanPham);
         resetColor(lblTrangchu);
         resetColor(lblThongke);
-        showPanel(new QuanLyNhanVien());
+        showPanel(new QuanLyNhanvienJPanel());
     }//GEN-LAST:event_pnNhanVienMouseClicked
 
     private void pnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnBanHangMouseClicked
@@ -440,7 +452,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblTrangchu);
         resetColor(lblThongke);
         resetColor(lblGiamGia);
-        showPanel(new QuanLyBanHang());
+        showPanel(new QuanLyBanHangJPanel());
     }//GEN-LAST:event_pnBanHangMouseClicked
 
     private void pnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnHoaDonMouseClicked
@@ -458,7 +470,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblSanPham);
         resetColor(lblTrangchu);
         resetColor(lblThongke);
-        showPanel(new QuanLyHoaDon());
+        showPanel(new QuanLyHoaDonJPanel());
     }//GEN-LAST:event_pnHoaDonMouseClicked
 
     private void pnThongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongkeMouseClicked
@@ -477,7 +489,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblTrangchu);
         resetColor(lblHoaDon);
         resetColor(lblGiamGia);
-         showPanel(new QuanLyThongKe());
+         showPanel(new MainThongKeJPanel());
     }//GEN-LAST:event_pnThongkeMouseClicked
 
     private void pnGiagiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGiagiaMouseClicked
@@ -496,7 +508,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblTrangchu);
         resetColor(lblHoaDon);
         resetColor(lblThongke);
-        showPanel(new QuanLyKhuyenMai());
+        showPanel(new GiamGiaSanPhamJPanel());
     }//GEN-LAST:event_pnGiagiaMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -506,10 +518,33 @@ public class main extends javax.swing.JFrame {
 
     private void mnDMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDMKActionPerformed
         // TODO add your handling code here:
+        DoiMatKhauJDialog a = new DoiMatKhauJDialog(null, true);
+        a.setVisible(true);
         
     }//GEN-LAST:event_mnDMKActionPerformed
 
     private void mnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnThoatActionPerformed
+       
+       
+        int result = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn thoát khỏi phiên làm việc?", "UPCOFFEE", JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION){
+            Auth.clear();
+             lblNameNV.setText("Wellcome Here!");
+             DangnhapJDialog b = new DangnhapJDialog(null, true);
+             
+            b.setVisible(true);
+            if(Auth.isLogin()==true){
+                lblNameNV.setText(Auth.user.getTenNV());
+            }
+        }
+//             Auth.clear();
+//             lblNameNV.setText("Wellcome Here!");
+//             DangnhapJDialog b = new DangnhapJDialog(null, true);
+//             
+//            b.setVisible(true);
+//            if(Auth.isLogin()==true){
+//                lblNameNV.setText(Auth.user.getTenNV());
+//            }
        
     }//GEN-LAST:event_mnThoatActionPerformed
 
@@ -538,8 +573,6 @@ public class main extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -587,10 +620,10 @@ public class main extends javax.swing.JFrame {
         pnscrene.validate();
     }
      public void setColorJpanel(JPanel pane){
-        pane.setBackground(new java.awt.Color(51,204,0));
+        pane.setBackground(new java.awt.Color(55, 148, 254));
     }
     public void resetColorJpane(JPanel pane){
-        pane.setBackground(new java.awt.Color(102,255,102));
+        pane.setBackground(new java.awt.Color(41, 93, 157));
     }
     public void setColor(JLabel label) {
         label.setForeground(Color.black);

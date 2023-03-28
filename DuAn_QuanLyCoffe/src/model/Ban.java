@@ -1,5 +1,5 @@
 
-package model;
+package Model;
 
 import java.util.Date;
 
@@ -53,10 +53,10 @@ public class Ban {
         this.soluongcho = soluongcho;
     }
 
+ 
     @Override
     public String toString() {
-        return "Ban{" + "idBan=" + idBan + ", trangThai=" + trangThai + ", hoatDong=" + hoatDong + ", soluongcho=" + soluongcho + '}';
+        return "Bàn:"+ idBan + " ("+soluongcho+")";
     }
-
     
 }

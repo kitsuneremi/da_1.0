@@ -80,10 +80,4 @@ public class GiamGia {
         this.idnhanvien = idnhanvien;
     }
 
-    @Override
-    public String toString() {
-        return "GiamGia{" + "id_GiamGia=" + id_GiamGia + ", tenSK=" + tenSK + ", idnhanvien=" + idnhanvien + ", ngayBD=" + ngayBD + ", ngayKT=" + ngayKT + '}';
-    }
-    
-
 }
