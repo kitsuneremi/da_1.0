@@ -156,12 +156,13 @@ public class HoaDonRepoImpl1 implements HoaDonRepository {
         }
     }
 
-    public boolean updateTrangthai(String idhd) {
+    public boolean updateTrangthai(String idhd, int trangthai) {
         try {
             String sql = "update dbo.HoaDon set Trangthai = ? where ID_Hoadon = ?";
             Connection conn = DBConnections.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, idhd);
+            ps.setInt(1, trangthai);
+            ps.setString(2, idhd);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -169,12 +170,13 @@ public class HoaDonRepoImpl1 implements HoaDonRepository {
         }
     }
 
-    public boolean updateThanhTien(String idhd) {
+    public boolean updateThanhTien(int idhd, int tt) {
         try {
             String sql = "update dbo.HoaDon set Thanhtien = ? where ID_Hoadon = ?";
             Connection conn = DBConnections.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, idhd);
+            ps.setInt(1, tt);
+            ps.setInt(2, idhd);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -195,46 +197,34 @@ public class HoaDonRepoImpl1 implements HoaDonRepository {
         }
     }
 
-    public boolean updateslsphuy(String idhd) {
-        try {
-            String sql = "update dbo.HoaDon set Thanhtien = ? where ID_Hoadon = ?";
-            Connection conn = DBConnections.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, idhd);
-            return ps.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean updateTttt(String idhd,int tt) {
-        try {
-            String sql = "update dbo.HoaDon set TTThanhtoan = ? where ID_Hoadon = ?";
-            Connection conn = DBConnections.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, tt);
-            ps.setString(2, idhd);
-            return ps.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean updateSlsphuy(String idhd, int sl) {
+    public boolean updateslsphuy(int idhd, int sl) {
         try {
             String sql = "update dbo.HoaDon set Soluongsanphamhuy = ? where ID_Hoadon = ?";
             Connection conn = DBConnections.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, sl);
-            ps.setString(2, idhd);
+            ps.setInt(2, idhd);
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
         }
     }
+
+    public boolean updateTttt(int idhd,int tt) {
+        try {
+            String sql = "update dbo.HoaDon set TTThanhtoan = ? where ID_Hoadon = ?";
+            Connection conn = DBConnections.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, tt);
+            ps.setInt(2, idhd);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     
     public ArrayList<HoaDonChiTiet> gethdct(String idhd){
     try {
@@ -252,6 +242,68 @@ public class HoaDonRepoImpl1 implements HoaDonRepository {
                 hdct.setTrangThai(rs.getBoolean(3));
                 hdct.setGhiChu(rs.getString(4));
                 list.add(hdct);
+            }
+            return list;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<HoaDon> getctt(int a){
+        String sql = "select * from HoaDon join BanChiTiet on BanChiTiet.ID_Hoadon = HoaDon.ID_Hoadon where TTThanhtoan = 0 and HoaDon.Trangthai = 1 and ID_Ban = ? ";
+        try {
+            ArrayList<HoaDon> list = new ArrayList<>();
+            Connection conn = DBConnections.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                HoaDon hd = new HoaDon();
+                hd.setIdHoaDon(rs.getInt(1));
+                hd.setIdNhanVien(rs.getString(2));
+                hd.setNgayTao(rs.getDate(3));
+                hd.setTrangThai(rs.getBoolean(4));
+                hd.setTrangThaiTT(rs.getBoolean(5));
+                hd.setThanhTien(rs.getInt(6));
+                hd.setLyDoHuy(rs.getString(7));
+                hd.setSlSanPhamHuy(rs.getInt(8));
+                hd.setGhiChu(rs.getString(9));
+                hd.setSDT(rs.getString(10));
+                hd.setTen(rs.getString(11));
+                hd.setDiaChi(rs.getString(12));
+                hd.setTienShip(rs.getInt(13));
+                list.add(hd);
+            }
+            return list;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<HoaDon> getallctt(){
+        String sql = "select * from dbo.HoaDon where Trangthai = 1 and TTThanhtoan = 0";
+        try {
+            ArrayList<HoaDon> list = new ArrayList<>();
+            Connection conn = DBConnections.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                HoaDon hd = new HoaDon();
+                hd.setIdHoaDon(rs.getInt(1));
+                hd.setIdNhanVien(rs.getString(2));
+                hd.setNgayTao(rs.getDate(3));
+                hd.setTrangThai(rs.getBoolean(4));
+                hd.setTrangThaiTT(rs.getBoolean(5));
+                hd.setThanhTien(rs.getInt(6));
+                hd.setLyDoHuy(rs.getString(7));
+                hd.setSlSanPhamHuy(rs.getInt(8));
+                hd.setGhiChu(rs.getString(9));
+                hd.setSDT(rs.getString(10));
+                hd.setTen(rs.getString(11));
+                hd.setDiaChi(rs.getString(12));
+                hd.setTienShip(rs.getInt(13));
+                list.add(hd);
             }
             return list;
         } catch (SQLException ex) {
