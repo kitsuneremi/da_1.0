@@ -20,6 +20,16 @@ public class HoaDonRepoImpl1 implements HoaDonRepository {
             String sql = "insert into hoadon values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             Connection conn = DBConnections.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, hd.getIdHoaDon());
+            ps.setString(2, hd.getIdNhanVien());
+            ps.setDate(3, (Date) hd.getNgayTao());
+            ps.setInt(4, 0);
+            ps.setInt(5, 0);
+            ps.setString(6, hd.getGhiChu());
+            ps.setString(7, hd.getSDT());
+            ps.setString(8, hd.getTen());
+            ps.setString(9, hd.getDiaChi());
+            ps.setInt(10, hd.getTienShip());
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
