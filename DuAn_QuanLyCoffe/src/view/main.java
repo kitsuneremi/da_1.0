@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import view.QuanLyHoaDon;
 
 public class main extends javax.swing.JFrame {
 
@@ -14,17 +14,17 @@ public class main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //showPanel(new QuanLySanPhamJPanel());
 //        new DangnhapJDialog(this, true).setVisible(true);
-        
-        if(Auth.isLogin() == true){
+
+        if (Auth.isLogin() == true) {
             lblNameNV.setText(Auth.user.getTenNV());
-        }else{
+        } else {
             new DangnhapJDialog(this, true).setVisible(true);
             lblNameNV.setText(Auth.user.getTenNV());
         }
         setExtendedState(this.MAXIMIZED_BOTH);
         setColor(lblTrangchu);
         setColorJpanel(pnTrangChu);
-         showPanel(new TrangchuJPanel());
+        showPanel(new TrangchuJPanel());
     }
 
     @SuppressWarnings("unchecked")
@@ -389,7 +389,7 @@ public class main extends javax.swing.JFrame {
         resetColorJpane(pnNhanVien);
         resetColorJpane(pnSanPham);
         resetColorJpane(pnThongke);
-        
+
         setColor(lblTrangchu);
         resetColor(lblHoaDon);
         resetColor(lblBanHang);
@@ -470,7 +470,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblSanPham);
         resetColor(lblTrangchu);
         resetColor(lblThongke);
-        showPanel(new QuanLyHoaDonJPanel());
+        showPanel(new QuanLyHoaDon());
     }//GEN-LAST:event_pnHoaDonMouseClicked
 
     private void pnThongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongkeMouseClicked
@@ -489,7 +489,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblTrangchu);
         resetColor(lblHoaDon);
         resetColor(lblGiamGia);
-         showPanel(new MainThongKeJPanel());
+        showPanel(new MainThongKeJPanel());
     }//GEN-LAST:event_pnThongkeMouseClicked
 
     private void pnGiagiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGiagiaMouseClicked
@@ -520,20 +520,19 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
         DoiMatKhauJDialog a = new DoiMatKhauJDialog(null, true);
         a.setVisible(true);
-        
+
     }//GEN-LAST:event_mnDMKActionPerformed
 
     private void mnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnThoatActionPerformed
-       
-       
+
         int result = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn thoát khỏi phiên làm việc?", "UPCOFFEE", JOptionPane.YES_NO_OPTION);
-        if(result == JOptionPane.YES_OPTION){
+        if (result == JOptionPane.YES_OPTION) {
             Auth.clear();
-             lblNameNV.setText("Wellcome Here!");
-             DangnhapJDialog b = new DangnhapJDialog(null, true);
-             
+            lblNameNV.setText("Wellcome Here!");
+            DangnhapJDialog b = new DangnhapJDialog(null, true);
+
             b.setVisible(true);
-            if(Auth.isLogin()==true){
+            if (Auth.isLogin() == true) {
                 lblNameNV.setText(Auth.user.getTenNV());
             }
         }
@@ -545,7 +544,7 @@ public class main extends javax.swing.JFrame {
 //            if(Auth.isLogin()==true){
 //                lblNameNV.setText(Auth.user.getTenNV());
 //            }
-       
+
     }//GEN-LAST:event_mnThoatActionPerformed
 
     /**
@@ -619,12 +618,15 @@ public class main extends javax.swing.JFrame {
         pnscrene.add(panel);
         pnscrene.validate();
     }
-     public void setColorJpanel(JPanel pane){
+
+    public void setColorJpanel(JPanel pane) {
         pane.setBackground(new java.awt.Color(55, 148, 254));
     }
-    public void resetColorJpane(JPanel pane){
+
+    public void resetColorJpane(JPanel pane) {
         pane.setBackground(new java.awt.Color(41, 93, 157));
     }
+
     public void setColor(JLabel label) {
         label.setForeground(Color.black);
     }
