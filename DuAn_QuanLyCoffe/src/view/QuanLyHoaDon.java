@@ -502,7 +502,7 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
             return;
         } else {
             HoaDon hd = repo.findOne(tblHoaDon.getValueAt(row, 0).toString());
-            repo.updateTttt(tblHoaDon.getValueAt(row, 0).toString(), 0);
+            repo.updateTttt(Integer.parseInt(tblHoaDon.getValueAt(row, 0).toString()), 0);
             JOptionPane.showMessageDialog(this, "đã hủy đơn");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
