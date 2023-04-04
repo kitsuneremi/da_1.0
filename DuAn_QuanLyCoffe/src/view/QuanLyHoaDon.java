@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package View;
 
 import Model.HoaDon;
 import Repository.Impl.HoaDonRepoImpl1;
@@ -485,13 +485,13 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         int row = tblHoaDon.getSelectedRow();
 //        HoaDon hdx = repo.findOne(tblHoaDon.getValueAt(row, 0).toString());
 //        System.out.println(hdx.getTen());
-        HoadonchitietJDialog hd = new HoadonchitietJDialog(tblHoaDon.getValueAt(row, 0).toString());
+        HoadonchitietJDialog hd = new HoadonchitietJDialog(Integer.parseInt(tblHoaDon.getValueAt(row, 0).toString()));
         hd.setVisible(true);
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void tblHoaDonHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonHuyMouseClicked
         int row = tblHoaDon.getSelectedRow();
-        HoadonchitietJDialog hd = new HoadonchitietJDialog(tblHoaDon.getValueAt(row, 0).toString());
+        HoadonchitietJDialog hd = new HoadonchitietJDialog(Integer.parseInt(tblHoaDon.getValueAt(row, 0).toString()));
         hd.setVisible(true);
     }//GEN-LAST:event_tblHoaDonHuyMouseClicked
 

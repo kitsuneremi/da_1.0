@@ -12,7 +12,7 @@ import Repository.Impl.HoaDonRepoImpl;
 import Repository.Impl.SanPhamRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.HoaDonChiTiet;
 import java.util.ArrayList;
 import java.util.List;
@@ -140,7 +140,6 @@ public class ChucNangTachDonJDialog extends javax.swing.JDialog {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Giá ", "Tổng giá", "Ghi chú"
             }
         ));
-        tblHDchitiet.setRowHeight(20);
         tblHDchitiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tblHDchitietMouseReleased(evt);
@@ -166,7 +165,6 @@ public class ChucNangTachDonJDialog extends javax.swing.JDialog {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Giá ", "Tổng giá", "Ghi chú"
             }
         ));
-        tblHDchitiet1.setRowHeight(20);
         jScrollPane2.setViewportView(tblHDchitiet1);
 
         btnXedon.setBackground(new java.awt.Color(255, 255, 255));
@@ -474,14 +472,14 @@ public class ChucNangTachDonJDialog extends javax.swing.JDialog {
 
     private void btnXedonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXedonActionPerformed
         // TODO add your handling code here:
-        Hoadon hdgoc = DAOHD.selectById(idhd);
-        Hoadon hdtach = new Hoadon();
+        HoaDon hdgoc = DAOHD.selectById(idhd);
+        HoaDon hdtach = new HoaDon();
         hdtach.setIdNhanVien("NV1");
         hdtach.setNgayTao(hdgoc.getNgayTao());
         hdtach.setTrangThai(true);
         hdtach.setTrangThaiTT(false);
         DAOHD.insert(hdtach);
-        List<Hoadon> list = DAOHD.selectAll();
+        List<HoaDon> list = DAOHD.selectAll();
         lblDontach.setText(list.get(list.size() - 1).getIdHoaDon() + "");
         BanChiTiet bct = DAObanct.selectById(idban, idhd);
         BanChiTiet banct = new BanChiTiet();
@@ -526,14 +524,14 @@ public class ChucNangTachDonJDialog extends javax.swing.JDialog {
         for (HoaDonChiTiet hoadonchitiet : listupdatetiendoncu) {
             tiendoncu += hoadonchitiet.getTongGia();
         }
-        Hoadon hoadoncu = DAOHD.selectById(idhd);
+        HoaDon hoadoncu = DAOHD.selectById(idhd);
         hoadoncu.setThanhTien(tiendoncu);
         DAOHD.updateThanhtien(hoadoncu);
         for (int i = 0; i < listbctduocXe.size(); i++) {
             HoaDonChiTiet hd = listbctduocXe.get(i);
             tiendonmoi += hd.getTongGia();
         }
-        Hoadon hoadonmoi = DAOHD.selectById(Integer.parseInt(lblDontach.getText()));
+        HoaDon hoadonmoi = DAOHD.selectById(Integer.parseInt(lblDontach.getText()));
         hoadonmoi.setThanhTien(tiendonmoi);
         DAOHD.updateThanhtien(hoadonmoi);
         List<BanChiTiet> listbct = DAObanct.selectByIdHD(idhd);

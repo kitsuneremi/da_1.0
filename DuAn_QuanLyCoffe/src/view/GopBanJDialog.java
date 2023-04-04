@@ -6,7 +6,7 @@ import Repository.Impl.BanRepoImpl;
 import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -223,7 +223,7 @@ public void filltocbo(){
     for (Ban ban : list) {
         List<BanChiTiet> listbct = DAObct.selectByIdBan(ban.getIdBan());
         if (!listbct.isEmpty()) {
-            Hoadon hd = DAOhd.selectById(listbct.get(0).getID_HoaDon());
+            HoaDon hd = DAOhd.selectById(listbct.get(0).getID_HoaDon());
             //System.out.println(hd.getSDT());
             if (hd.getSDT() != null) {
                 continue;

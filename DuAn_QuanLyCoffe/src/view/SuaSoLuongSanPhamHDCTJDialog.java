@@ -10,7 +10,7 @@ import Model.GiamGiaChiTiet;
 import Model.HoaDonChiTiet;
 import Model.SanPham;
 import Model.GiamGia;
-import Model.Hoadon;
+import Model.HoaDon;
 import static View.NhapsoluongSanPhamJDialog.MASP;
 import java.text.SimpleDateFormat;
 import java.util.Date;

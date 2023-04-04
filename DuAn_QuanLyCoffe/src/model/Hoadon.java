@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Date;
 
-public class Hoadon {
+public class HoaDon {
 
     private int idHoaDon;
     private String idNhanVien;
@@ -18,10 +18,10 @@ public class Hoadon {
     private String diaChi;
     private int tienShip;
 
-    public Hoadon() {
+    public HoaDon() {
     }
 
-    public Hoadon(int idHoaDon, String idNhanVien, Date ngayTao, boolean trangThai, boolean trangThaiTT, int thanhTien, String lyDoHuy, int slSanPhamHuy, String ghiChu, String SDT, String ten, String diaChi, int tienShip) {
+    public HoaDon(int idHoaDon, String idNhanVien, Date ngayTao, boolean trangThai, boolean trangThaiTT, int thanhTien, String lyDoHuy, int slSanPhamHuy, String ghiChu, String SDT, String ten, String diaChi, int tienShip) {
         this.idHoaDon = idHoaDon;
         this.idNhanVien = idNhanVien;
         this.ngayTao = ngayTao;
@@ -141,4 +141,5 @@ public class Hoadon {
         this.tienShip = tienShip;
     }
 
+    
 }

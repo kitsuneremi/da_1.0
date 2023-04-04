@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import view.QuanLyHoaDon;
 
 public class main extends javax.swing.JFrame {
 

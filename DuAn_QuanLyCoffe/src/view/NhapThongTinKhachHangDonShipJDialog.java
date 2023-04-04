@@ -10,7 +10,7 @@ import Repository.Impl.BanRepoImpl;
 import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Helper.Xdate;
 import java.util.Date;
 import java.util.List;
@@ -235,7 +235,7 @@ static String dayNow;
         DAOHOADON.insert(setInforHoaDon());
         DAOBAN.updateHoatDong(numberDesk.getIdBan());
         numberDesk.setHoatDong(false);
-        List<Hoadon> list = DAOHOADON.selectAll();
+        List<HoaDon> list = DAOHOADON.selectAll();
         BanChiTiet bct = new BanChiTiet(list.get(list.size() -1).getIdHoaDon(),numberDesk.getIdBan(), new Date(),true);
         System.out.println(list.get(list.size() -1).getIdHoaDon()+"");
         DAOBanCT.insert(bct);
@@ -301,8 +301,8 @@ static String dayNow;
     private javax.swing.JTextField txtTen;
     private javax.swing.JTextField txtTienShip;
     // End of variables declaration//GEN-END:variables
-private Hoadon setInforHoaDon(){
-    Hoadon hd = new Hoadon();
+private HoaDon setInforHoaDon(){
+    HoaDon hd = new HoaDon();
     //hd.setIdHoaDon(i);
     hd.setIdNhanVien("NV1");
     hd.setNgayTao(Xdate.toDate(dayNow, "yyyy-MM-dd"));

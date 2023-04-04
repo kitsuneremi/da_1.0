@@ -6,7 +6,7 @@ import Repository.Impl.BanRepoImpl;
 import Repository.Impl.HoaDonRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Helper.PrintPDF;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
 
-    public ChucNangThanhToanNhieuDonJDialog(java.awt.Frame parent, boolean modal, List<Hoadon> list, DefaultTableModel model) {
+    public ChucNangThanhToanNhieuDonJDialog(java.awt.Frame parent, boolean modal, List<HoaDon> list, DefaultTableModel model) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -25,7 +25,7 @@ public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
         lblBanSo.setText(ban.getIdBan() + "");
         filltocbo();
     }
-    static List<Hoadon> listhoadonctt;
+    static List<HoaDon> listhoadonctt;
     static DefaultTableModel models;
 
     @SuppressWarnings("unchecked")
@@ -238,7 +238,7 @@ public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
             return;
         }
 
-        Hoadon hd = DAOHD.selectById((int) cboDonSo.getSelectedItem());
+        HoaDon hd = DAOHD.selectById((int) cboDonSo.getSelectedItem());
         List<BanChiTiet> listbct = DAObct.selectByIdHD((int) cboDonSo.getSelectedItem());
         hd.setTrangThaiTT(true);
         DAOHD.updateThanhToan(hd);
@@ -273,8 +273,8 @@ public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
             }
             jButton1.setEnabled(false);
             btnThanhtoanTaonBo.setText("Thanh toán toàn bộ");
-            for (Hoadon hoadon : listhoadonctt) {
-                Hoadon hd = DAOHD.selectById(hoadon.getIdHoaDon());
+            for (HoaDon hoadon : listhoadonctt) {
+                HoaDon hd = DAOHD.selectById(hoadon.getIdHoaDon());
                 hd.setTrangThaiTT(true);
                 DAOHD.updateThanhToan(hd);
             }
@@ -295,7 +295,7 @@ public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
             jButton1.setEnabled(false);
             btnThanhtoanTaonBo.setText("Xác nhận thanh toán");
             int tien = 0;
-            for (Hoadon hoadon : listhoadonctt) {
+            for (HoaDon hoadon : listhoadonctt) {
                 tien += hoadon.getThanhTien();
             }
             lblTongTien.setText(tien + "");
@@ -317,7 +317,7 @@ public class ChucNangThanhToanNhieuDonJDialog extends javax.swing.JDialog {
         if (cboDonSo.getSelectedIndex() > -1) {
             jButton1.setEnabled(true);
             btnThanhtoanTaonBo.setText("Thanh toán toàn bộ");
-            Hoadon hd = DAOHD.selectById((int) cboDonSo.getSelectedItem());
+            HoaDon hd = DAOHD.selectById((int) cboDonSo.getSelectedItem());
             if (hd != null) {
                 lblTongTien.setText(hd.getThanhTien() + "");
             } else {
@@ -394,8 +394,8 @@ BanRepoImpl DAOBAN = new BanRepoImpl();
         resetList();
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboDonSo.getModel();
         model.removeAllElements();
-        List<Hoadon> list = listhoadonctt;
-        for (Hoadon hoadon : list) {
+        List<HoaDon> list = listhoadonctt;
+        for (HoaDon hoadon : list) {
             model.addElement(hoadon.getIdHoaDon());
             System.out.println("d");
         }
@@ -403,7 +403,7 @@ BanRepoImpl DAOBAN = new BanRepoImpl();
     }
 
     public void resetList() {
-        List<Hoadon> list = DAOHD.selectCTT(Integer.parseInt(lblBanSo.getText()));
+        List<HoaDon> list = DAOHD.selectCTT(Integer.parseInt(lblBanSo.getText()));
         listhoadonctt = list;
     }
 

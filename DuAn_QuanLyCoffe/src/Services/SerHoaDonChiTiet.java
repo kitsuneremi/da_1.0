@@ -16,7 +16,7 @@ import View.HoadonchitietJDialog;
 import Repository.Impl.HoadonchitietRepoImpl;
 import Model.DonViSanPham;
 import Model.GiamGiaChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.SanPham;
 import java.text.SimpleDateFormat;
 import java.util.Date;

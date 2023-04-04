@@ -5,22 +5,22 @@ import Repository.Impl.BanRepoImpl;
 import Repository.Impl.HoaDonRepoImpl;
 import Repository.Impl.HoadonchitietRepoImpl;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.HoaDonChiTiet;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
 public class ChucNangGopDonJDialog extends javax.swing.JDialog {
 
-    public ChucNangGopDonJDialog(java.awt.Frame parent, boolean modal, Hoadon hd) {
+    public ChucNangGopDonJDialog(java.awt.Frame parent, boolean modal, HoaDon hd) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        hoadon = hd;
+        HoaDon = hd;
         fillcbo();
-        lblMadon.setText(hoadon.getIdHoaDon() + "");
+        lblMadon.setText(HoaDon.getIdHoaDon() + "");
     }
-    static Hoadon hoadon;
+    static HoaDon HoaDon;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -128,10 +128,10 @@ boolean status = true;
     HoaDonRepoImpl DAOHD = new HoaDonRepoImpl();
     private void btnGopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGopActionPerformed
         // TODO add your handling code here:
-        Hoadon hd = DAOHD.selectById(hoadon.getIdHoaDon());
+        HoaDon hd = DAOHD.selectById(HoaDon.getIdHoaDon());
         hd.setTrangThai(false);//xét trạng thái hủy
         DAOHD.updateTrangThai(hd);
-        List<BanChiTiet> listbct = DAOBanCT.selectByIdHD(hoadon.getIdHoaDon());//xem có liên kết với bàn khác nữa không
+        List<BanChiTiet> listbct = DAOBanCT.selectByIdHD(HoaDon.getIdHoaDon());//xem có liên kết với bàn khác nữa không
         for (BanChiTiet banChitiet : listbct) {
             if (DAOBAN.selectIDBan(banChitiet.getID_Ban()).isEmpty()) {//xem còn bàn chưa hủy hay không còn thì không đổi trạng thái hủy
                 DAOBAN.deleteHoatDong(banChitiet.getID_Ban());
@@ -139,53 +139,53 @@ boolean status = true;
             //System.out.println(banChitiet.getID_Ban());
         }
         int goptoi = (int) cboMaDon.getSelectedItem();
-        List<HoaDonChiTiet> listdoncu = DAOhdct.selectByIdHD(hoadon.getIdHoaDon());
+        List<HoaDonChiTiet> listdoncu = DAOhdct.selectByIdHD(HoaDon.getIdHoaDon());
         List<HoaDonChiTiet> listdonmoi = DAOhdct.selectByIdHD(goptoi);
         int tiendonmoi = 0;
         for (HoaDonChiTiet hdchitietcu : listdoncu) {
-//            for (Hoadonchitiet hoadonchitietmoi : listdonmoi) {
-//                if (hdchitietcu.getID_SanPHam() == hoadonchitietmoi.getID_SanPHam()) {
-//                    int cong = hdchitietcu.getSoluong() + hoadonchitietmoi.getSoluong();
-//                    int thanhten = cong*hoadonchitietmoi.getGia();
-//                    Hoadonchitiet hoadoncp = hoadonchitietmoi;
-//                    hoadoncp.setSoluong(cong);
-//                    hoadoncp.setTongGia(thanhten);
-//                    DAOhdct.update_SL(hoadoncp);
-//                    DAOhdct.deletehoadonct(hdchitietcu.getID_Hoadon());
+//            for (HoaDonchitiet HoaDonchitietmoi : listdonmoi) {
+//                if (hdchitietcu.getID_SanPHam() == HoaDonchitietmoi.getID_SanPHam()) {
+//                    int cong = hdchitietcu.getSoluong() + HoaDonchitietmoi.getSoluong();
+//                    int thanhten = cong*HoaDonchitietmoi.getGia();
+//                    HoaDonchitiet HoaDoncp = HoaDonchitietmoi;
+//                    HoaDoncp.setSoluong(cong);
+//                    HoaDoncp.setTongGia(thanhten);
+//                    DAOhdct.update_SL(HoaDoncp);
+//                    DAOhdct.deleteHoaDonct(hdchitietcu.getID_HoaDon());
 //                }else{
-//                    DAOhdct.updateIDHOADON(hdchitietcu.getID_Hoadon(), goptoi, hdchitietcu.getID_SanPHam());
+//                    DAOhdct.updateIDHoaDon(hdchitietcu.getID_HoaDon(), goptoi, hdchitietcu.getID_SanPHam());
 //                }
 //            }
 
-            HoaDonChiTiet hoadonchitietmoi = DAOhdct.selectById(goptoi, hdchitietcu.getID_SanPHam());
-            if (hoadonchitietmoi != null) {
-                int cong = hdchitietcu.getSoluong() + hoadonchitietmoi.getSoluong();
-                int thanhten = cong * hoadonchitietmoi.getGia();
-                HoaDonChiTiet hoadoncp = hoadonchitietmoi;
-                hoadoncp.setSoluong(cong);
-                hoadoncp.setTongGia(thanhten);
-                hoadoncp.setGhiChu("Gộp từ đơn: " + hdchitietcu.getID_Hoadon() + ", SL: " + hdchitietcu.getSoluong());
-                DAOhdct.update_SL(hoadoncp);
-                //tiendonmoi += hoadoncp.getTongGia()+hdchitietcu.getTongGia();
+            HoaDonChiTiet HoaDonchitietmoi = DAOhdct.selectById(goptoi, hdchitietcu.getID_SanPHam());
+            if (HoaDonchitietmoi != null) {
+                int cong = hdchitietcu.getSoluong() + HoaDonchitietmoi.getSoluong();
+                int thanhten = cong * HoaDonchitietmoi.getGia();
+                HoaDonChiTiet HoaDoncp = HoaDonchitietmoi;
+                HoaDoncp.setSoluong(cong);
+                HoaDoncp.setTongGia(thanhten);
+                HoaDoncp.setGhiChu("Gộp từ đơn: " + hdchitietcu.getID_Hoadon() + ", SL: " + hdchitietcu.getSoluong());
+                DAOhdct.update_SL(HoaDoncp);
+                //tiendonmoi += HoaDoncp.getTongGia()+hdchitietcu.getTongGia();
                 DAOhdct.deletehoadonct(hdchitietcu.getID_Hoadon(), hdchitietcu.getID_SanPHam());
             } else {
                 System.out.println("a");
                 hdchitietcu.setGhiChu("Gộp từ đơn: " + hdchitietcu.getID_Hoadon() + ", SL: " + hdchitietcu.getSoluong());
                 DAOhdct.update_ghichu(hdchitietcu);
                 DAOhdct.updateIDHOADON(hdchitietcu.getID_Hoadon(), goptoi, hdchitietcu.getID_SanPHam());
-                Hoadon hdgopvao = DAOHD.selectById((int) cboMaDon.getSelectedItem());
+                HoaDon hdgopvao = DAOHD.selectById((int) cboMaDon.getSelectedItem());
 //                    tiendonmoi = hdgopvao.getThanhTien();
 //                    tiendonmoi += hdchitietcu.getTongGia();
             }
         }
-        Hoadon hdtachmoi = DAOHD.selectById(goptoi);
+        HoaDon hdtachmoi = DAOHD.selectById(goptoi);
         List<HoaDonChiTiet> hdcongtien = DAOhdct.selectByIdHD(goptoi);
-        for (HoaDonChiTiet hoadonchitiet : hdcongtien) {
-            tiendonmoi += hoadonchitiet.getTongGia();
+        for (HoaDonChiTiet HoaDonchitiet : hdcongtien) {
+            tiendonmoi += HoaDonchitiet.getTongGia();
         }
         hdtachmoi.setThanhTien(tiendonmoi);
         DAOHD.updateThanhtien(hdtachmoi);
-        DAOhd.delete(hoadon);
+        DAOhd.delete(HoaDon);
         dispose();
     }//GEN-LAST:event_btnGopActionPerformed
 
@@ -210,7 +210,7 @@ boolean status = true;
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ChucNangGopDonJDialog dialog = new ChucNangGopDonJDialog(new javax.swing.JFrame(), true, hoadon);
+                ChucNangGopDonJDialog dialog = new ChucNangGopDonJDialog(new javax.swing.JFrame(), true, HoaDon);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -237,17 +237,17 @@ HoaDonRepoImpl DAOhd = new HoaDonRepoImpl();
 
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaDon.getModel();
         model.removeAllElements();
-        List<Hoadon> list = DAOhd.selectCTTALL();
+        List<HoaDon> list = DAOhd.selectCTTALL();
         if (list.isEmpty()) {
             btnGop.setEnabled(false);
         } else {
             btnGop.setEnabled(true);
         }
-        for (Hoadon hd : list) {
+        for (HoaDon hd : list) {
             if (hd.getSDT() != null) {
                 continue;
             }
-            if (hd.getIdHoaDon() != hoadon.getIdHoaDon()) {
+            if (hd.getIdHoaDon() != HoaDon.getIdHoaDon()) {
                 model.addElement(hd.getIdHoaDon());
             }
         }

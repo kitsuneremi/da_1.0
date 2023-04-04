@@ -2,7 +2,7 @@ package Helper;
 
 import Repository.Impl.BanChiTietRepoImpl;
 import Repository.Impl.HoaDonRepoImpl;
-import Model.Hoadon;
+import Model.HoaDon;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -40,7 +40,7 @@ public class PrintPDF {
 
     //NumberFormat nbf = 
     public void a(DefaultTableModel model, int mahd, int tienkh, int tienthoi) {
-        Hoadon hd = hddao.selectById(mahd);
+        HoaDon hd = hddao.selectById(mahd);
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         try {
 // anh em khi code muốn chạy được phần in hóa đơn thì đổi source file nơi lưu trữ( cái dưới) và font chữ ( 2 cái dưới, front chữ đã tải và để trong file dự án rồi chỉ việc đổi link đường dẫn tới nó thôi) cre; Phong

@@ -7,7 +7,7 @@ package View;
 
 import java.text.NumberFormat;
 import Repository.Impl.HoaDonRepoImpl;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.NhanVien;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;

@@ -3,7 +3,7 @@ package View;
 import Services.SerHoaDon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.NhanVien;
 import javax.swing.DefaultComboBoxModel;
 
@@ -11,7 +11,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
 
     SerHoaDon sv = new SerHoaDon();
-    Hoadon hd = new Hoadon();
+    HoaDon hd = new HoaDon();
 
     public QuanLyHoaDonJPanel() {
         initComponents();
@@ -427,16 +427,16 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
     private void cbotrangthaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbotrangthaiItemStateChanged
         if (cbotrangthai.getSelectedIndex() == 2) {
-            sv.filltotablehoadon();
-            sv.filltotablehoadonhuy();
+            sv.filltotableHoaDon();
+            sv.filltotableHoaDonhuy();
         }
         if (cbotrangthai.getSelectedIndex() == 1) {
-            sv.filltotablehoadon_chuathanhtoan();
-            sv.filltotablehoadonhuy_chuathanhtoan();
+            sv.filltotableHoaDon_chuathanhtoan();
+            sv.filltotableHoaDonhuy_chuathanhtoan();
         }
         if (cbotrangthai.getSelectedIndex() == 0) {
-            sv.filltotablehoadon_dathanhtoan();
-            sv.filltotablehoadonhuy_dathanhtoan();
+            sv.filltotableHoaDon_dathanhtoan();
+            sv.filltotableHoaDonhuy_dathanhtoan();
         }
     }//GEN-LAST:event_cbotrangthaiItemStateChanged
 
@@ -467,8 +467,8 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
-        sv.filltotablehoadon();
-        sv.filltotablehoadonhuy();
+        sv.filltotableHoaDon();
+        sv.filltotableHoaDonhuy();
     }
 
     private void fillcombo() {

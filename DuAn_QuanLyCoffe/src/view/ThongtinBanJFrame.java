@@ -6,7 +6,7 @@ import Repository.Impl.HoaDonRepoImpl;
 import Repository.Impl.HoadonchitietRepoImpl;
 import Model.Ban;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.HoaDonChiTiet;
 import Helper.Xdate;
 import java.awt.Color;
@@ -173,12 +173,12 @@ public class ThongtinBanJFrame extends javax.swing.JFrame {
             BanChiTiet banctdc = banctdao.selectBydonchinh(banchitiet.getID_HoaDon());
             lblban.setText(banctdc.getID_Ban() + "");
             int tienTong = 0;
-            List<Hoadon> listhd = hddao.selectCTT(idban);
-            for (Hoadon hoadon : listhd) {
+            List<HoaDon> listhd = hddao.selectCTT(idban);
+            for (HoaDon hoadon : listhd) {
                 tienTong += hoadon.getThanhTien();
             }
             lblTongTien.setText(tienTong + "");
-            Hoadon hd = hddao.selectById(banctdc.getID_HoaDon());
+            HoaDon hd = hddao.selectById(banctdc.getID_HoaDon());
             if (hd.getSDT() == null || hd.getSDT().equals("")) {
                 if (ban.isTrangThai() == false) {
                     lbltrangthaidon.setText("tại quầy");

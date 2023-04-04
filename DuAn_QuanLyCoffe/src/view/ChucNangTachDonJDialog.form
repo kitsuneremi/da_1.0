@@ -237,7 +237,6 @@
                     <Column editable="true" title="Ghi ch&#xfa;" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="rowHeight" type="int" value="20"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblHDchitietMouseReleased"/>
@@ -281,7 +280,6 @@
                     <Column editable="true" title="Ghi ch&#xfa;" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="rowHeight" type="int" value="20"/>
               </Properties>
             </Component>
           </SubComponents>

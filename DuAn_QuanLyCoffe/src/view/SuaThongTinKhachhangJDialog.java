@@ -1,19 +1,19 @@
 package View;
 
 import Repository.Impl.HoaDonRepoImpl;
-import Model.Hoadon;
+import Model.HoaDon;
 import javax.swing.JOptionPane;
 
 public class SuaThongTinKhachhangJDialog extends javax.swing.JDialog {
 
-    public SuaThongTinKhachhangJDialog(java.awt.Frame parent, boolean modal, Hoadon hd) {
+    public SuaThongTinKhachhangJDialog(java.awt.Frame parent, boolean modal, HoaDon hd) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         hoadon = hd;
         filltext();
     }
-    static Hoadon hoadon;
+    static HoaDon hoadon;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -206,7 +206,7 @@ public class SuaThongTinKhachhangJDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Tiền ship phải 1.000 đồng trở lên");
             return;
         }
-        Hoadon capnhaphoadon = updateBill();
+        HoaDon capnhaphoadon = updateBill();
         daohd.updatekh(hoadon);
         dispose();
     }//GEN-LAST:event_btnCapNhapActionPerformed
@@ -282,8 +282,8 @@ public void filltext() {
         txtTienShip.setText(hoadon.getTienShip() + "");
     }
 
-    public Hoadon updateBill() {
-        Hoadon hd = hoadon;
+    public HoaDon updateBill() {
+        HoaDon hd = hoadon;
         hd.setSDT(txtSDT.getText());
         hd.setTen(txtTen.getText());
         hd.setDiaChi(txtDiachi.getText());

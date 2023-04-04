@@ -14,7 +14,7 @@ import Helper.Auth;
 import Model.Ban;
 import Model.BanChiTiet;
 import Model.GiamGiaChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.HoaDonChiTiet;
 import Model.LoaiSanPham;
 import Model.SanPham;
@@ -728,7 +728,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             NhapsoluongSanPhamJDialog a = new NhapsoluongSanPhamJDialog(null, true, masp, Integer.parseInt(lblMaHoaDon.getText()));
             a.setVisible(true);
             filltoTableHDCT();
-            Hoadon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
+            HoaDon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
             hd.setThanhTien(Integer.parseInt(txtTongTien.getText()));
             DAOHOADON.updateThanhtien(hd);
         }
@@ -796,7 +796,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             }
             NhapThongTinKhachHangDonShipJDialog nhapthongtin = new NhapThongTinKhachHangDonShipJDialog(null, true, numberDesk, lblNgay.getText());
             nhapthongtin.setVisible(true);
-            List<Hoadon> list = DAOHOADON.selectAll();
+            List<HoaDon> list = DAOHOADON.selectAll();
             filltoDesk();
 
             filltoDesktaiquay();
@@ -854,7 +854,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         if (rowindex < 0) {
             return;
         }
-        Hoadon hoadon = DAOHOADON.selectById(Integer.parseInt(tblHoadon.getValueAt(rowindex, 0).toString()));
+        HoaDon hoadon = DAOHOADON.selectById(Integer.parseInt(tblHoadon.getValueAt(rowindex, 0).toString()));
         if (hoadon.getSDT() == null) {
             mnTachDon.setEnabled(true);
             mnChuyenban.setEnabled(true);
@@ -882,7 +882,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
          if (JOptionPane.showConfirmDialog(this, "Xác nhận thanh toán!") != JOptionPane.YES_OPTION) {
             return;
         }
-        List<Hoadon> list = DAOHOADON.selectCTT(numberDesk.getIdBan());
+        List<HoaDon> list = DAOHOADON.selectCTT(numberDesk.getIdBan());
         if (list.size() > 1) {
             ChucNangThanhToanNhieuDonJDialog cnThanhtoan = new ChucNangThanhToanNhieuDonJDialog(null, true, list, (DefaultTableModel) tblHoadonchitiet.getModel());
             cnThanhtoan.setVisible(true);
@@ -1041,7 +1041,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         int row = tblHoadon.getSelectedRow();
         int maHD = Integer.parseInt(tblHoadon.getValueAt(row, 0).toString());
         int maB = Integer.parseInt(tblHoadon.getValueAt(row, 5).toString());
-        List<Hoadon> list = DAOHOADON.selectCTTALL();
+        List<HoaDon> list = DAOHOADON.selectCTTALL();
         if (list.size() == 1) {
             JOptionPane.showMessageDialog(this, "Hiện tại không có đơn để gộp tới");
             return;
@@ -1051,7 +1051,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Hóa đơn không có sản phẩm nào.\\nGộp đơn thất bại!");
             return;
         }
-        Hoadon hd = DAOHOADON.selectById(Integer.parseInt(tblHoadon.getValueAt(row, 0).toString()));
+        HoaDon hd = DAOHOADON.selectById(Integer.parseInt(tblHoadon.getValueAt(row, 0).toString()));
         ChucNangGopDonJDialog cnGopDon = new ChucNangGopDonJDialog(null, true, hd);
         cnGopDon.setVisible(true);
 
@@ -1102,7 +1102,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     private void mnSuaThongtinkhachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSuaThongtinkhachActionPerformed
         // TODO add your handling code here:
         int row = tblHoadon.getSelectedRow();
-        Hoadon hd = DAOHOADON.selectById(Integer.parseInt(tblHoadon.getValueAt(row, 0).toString()));
+        HoaDon hd = DAOHOADON.selectById(Integer.parseInt(tblHoadon.getValueAt(row, 0).toString()));
         SuaThongTinKhachhangJDialog suatt = new SuaThongTinKhachhangJDialog(null, true, hd);
         suatt.setVisible(true);
         filltoHoadonCTT();
@@ -1195,7 +1195,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             JButton button = new JButton();
             List<BanChiTiet> bct = DAOBanCT.selectByIdBan(ban.getIdBan());
             if (ban.isHoatDong() != true) {
-                Hoadon hd = DAOHOADON.selectById(bct.get(0).getID_HoaDon());
+                HoaDon hd = DAOHOADON.selectById(bct.get(0).getID_HoaDon());
                 if (ban.isHoatDong() == false && ban.isTrangThai() == true) {
                     URL imagepath = classLoader.getResource("icon/Untitled-10.png");
                     Image imgBan = new ImageIcon(imagepath).getImage();
@@ -1300,7 +1300,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             JButton button = new JButton();
             List<BanChiTiet> bct = DAOBanCT.selectByIdBan(ban.getIdBan());
             if (ban.isHoatDong() != true) {
-                Hoadon hd = DAOHOADON.selectById(bct.get(0).getID_HoaDon());
+                HoaDon hd = DAOHOADON.selectById(bct.get(0).getID_HoaDon());
                 if (ban.isHoatDong() == false && ban.isTrangThai() == false && hd.getSDT() != null) {
                     continue;
                 } else {
@@ -1423,7 +1423,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 mnSua.setEnabled(true);
                 b.setSelected(true);
                 numberDesk = DAOBAN.selectById(Integer.parseInt(b.getText()));
-                List<Hoadon> listhd = DAOHOADON.selectCTT(numberDesk.getIdBan());
+                List<HoaDon> listhd = DAOHOADON.selectCTT(numberDesk.getIdBan());
                 List<BanChiTiet> listbct = DAOBanCT.selectByIdBan(numberDesk.getIdBan());
                 if (listhd.isEmpty() || listbct.isEmpty()) {
                     lblMaHoaDon.setText("......");
@@ -1450,7 +1450,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                     resettrue();
                     mnNhomBan.setEnabled(true);
                 }
-                Hoadon hoadin = listhd.get(0);
+                HoaDon hoadin = listhd.get(0);
                 if (hoadin.getSDT() == null && numberDesk.isTrangThai() == true) {
                     mnNhomBan.setEnabled(true);
                     mnGopBan.setEnabled(true);
@@ -1469,14 +1469,14 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }
     Ban numberDesk;
     Ban numberDeskhover;
-    Hoadon hoadonNumber;
+    HoaDon hoadonNumber;
     JButton b1;
 
     public void selectedButton(ActionEvent e, JButton button) {//them dieu ve ban
         if (e.getSource().getClass() == button.getClass()) {//laays button dang chon
             b1 = (JButton) e.getSource();
             numberDesk = hmap.get(b1);
-            List<Hoadon> listhd = DAOHOADON.selectCTT(numberDesk.getIdBan());
+            List<HoaDon> listhd = DAOHOADON.selectCTT(numberDesk.getIdBan());
             List<BanChiTiet> listbct = DAOBanCT.selectByIdBan(numberDesk.getIdBan());
             if (listhd.isEmpty() || listbct.isEmpty()) {
                 lblMaHoaDon.setText("......");
@@ -1687,7 +1687,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }
 
     public void taoDon() {
-        Hoadon hd;
+        HoaDon hd;
         //    int i = 0;
         //    if (list.isEmpty()) {
         //        i = 1;
@@ -1703,7 +1703,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             DAOHOADON.insert(setInforHoaDon());
             DAOBAN.updateHoatDong(numberDesk.getIdBan());
             numberDesk.setHoatDong(false);
-            List<Hoadon> list = DAOHOADON.selectAll();
+            List<HoaDon> list = DAOHOADON.selectAll();
             BanChiTiet bct = new BanChiTiet(list.get(list.size() - 1).getIdHoaDon(), numberDesk.getIdBan(), new Date(), true);
             System.out.println(list.get(list.size() - 1).getIdHoaDon() + "");
             DAOBanCT.insert(bct);
@@ -1721,8 +1721,8 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         }
     }
 
-    private Hoadon setInforHoaDon() {
-        Hoadon hd = new Hoadon();
+    private HoaDon setInforHoaDon() {
+        HoaDon hd = new HoaDon();
         if(Auth.isLogin() == true){
             hd.setIdNhanVien(Auth.user.getId_Nhanvien());
             hd.setNgayTao(Xdate.toDate(lblNgay.getText(), "yyyy-MM-dd"));
@@ -1736,7 +1736,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }
 
     public void huyDon(int idBan, String maHD) {
-        Hoadon hd = DAOHOADON.selectById(Integer.parseInt(maHD));
+        HoaDon hd = DAOHOADON.selectById(Integer.parseInt(maHD));
         List<BanChiTiet> listbct = DAOBanCT.selectByIdHD(Integer.parseInt(maHD));
         LydoHoaDonHuyJDialog LDDH = new LydoHoaDonHuyJDialog(null, true, hd);
         LDDH.setVisible(true);
@@ -1761,7 +1761,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }
 
     public void thanhToanDon() {
-        Hoadon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
+        HoaDon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
         List<BanChiTiet> listbct = DAOBanCT.selectByIdHD(Integer.parseInt(lblMaHoaDon.getText()));
         hd.setTrangThaiTT(true);
         DAOHOADON.updateThanhToan(hd);
@@ -1789,8 +1789,8 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     public void filltoHoadonCTT() {
         DefaultTableModel model = (DefaultTableModel) tblHoadon.getModel();
         model.setRowCount(0);
-        List<Hoadon> list = DAOHOADON.selectCTTALL();
-        for (Hoadon hd : list) {
+        List<HoaDon> list = DAOHOADON.selectCTTALL();
+        for (HoaDon hd : list) {
             model.addRow(new Object[]{
                 hd.getIdHoaDon(),
                 hd.getNgayTao(),
@@ -1848,7 +1848,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         System.out.println(hdct.getID_Hoadon());
         DAOHDCHITIET.delete(hdct);
         filltoTableHDCT();
-        Hoadon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
+        HoaDon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
         hd.setThanhTien(Integer.parseInt(txtTongTien.getText()));
         hd.setSlSanPhamHuy(hdct.getSoluong() + hd.getSlSanPhamHuy());
         DAOHOADON.updateThanhtien(hd);
@@ -1860,7 +1860,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         SuaSoLuongSanPhamHDCTJDialog suaSL = new SuaSoLuongSanPhamHDCTJDialog(null, true, masp, mahd);
         suaSL.setVisible(true);
         filltoTableHDCT();
-        Hoadon hd = DAOHOADON.selectById(mahd);
+        HoaDon hd = DAOHOADON.selectById(mahd);
         hd.setThanhTien(Integer.parseInt(txtTongTien.getText()));
         DAOHOADON.updateThanhtien(hd);
     }

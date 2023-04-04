@@ -7,7 +7,7 @@ import Repository.Impl.BanChiTietRepoImpl;
 import Repository.Impl.HoaDonRepoImpl;
 import Repository.Impl.ThongKeRepoImpl;
 import Model.BanChiTiet;
-import Model.Hoadon;
+import Model.HoaDon;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Chunk;

@@ -1,18 +1,18 @@
 package View;
 
 import Repository.Impl.HoaDonRepoImpl;
-import Model.Hoadon;
+import Model.HoaDon;
 import javax.swing.JOptionPane;
 
 public class LydoHoaDonHuyJDialog extends javax.swing.JDialog {
 
-    public LydoHoaDonHuyJDialog(java.awt.Frame parent, boolean modal, Hoadon hd) {
+    public LydoHoaDonHuyJDialog(java.awt.Frame parent, boolean modal, HoaDon hd) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         hds = hd;
     }
-    static Hoadon hds;
+    static HoaDon hds;
     boolean exit = false;
 
     @SuppressWarnings("unchecked")
@@ -169,7 +169,7 @@ public class LydoHoaDonHuyJDialog extends javax.swing.JDialog {
 HoaDonRepoImpl hdDAO = new HoaDonRepoImpl();
 
     public void capnhatlydo() {
-        Hoadon hoadon = hds;
+        HoaDon hoadon = hds;
         hoadon.setLyDoHuy(txtLydo.getText());
         hdDAO.updateLydohuy(hoadon);
     }

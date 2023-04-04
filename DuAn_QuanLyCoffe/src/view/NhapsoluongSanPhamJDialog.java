@@ -17,7 +17,7 @@ import Model.GiamGiaChiTiet;
 import Model.HoaDonChiTiet;
 import Model.SanPham;
 import Model.GiamGia;
-import Model.Hoadon;
+import Model.HoaDon;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,7 +53,7 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         MASP = masp;
         MAHOADON = MAHD;
         fillcomboDonVi();
-        Hoadon hd = hdd.selectById(MAHD);
+        HoaDon hd = hdd.selectById(MAHD);
         int idBan = DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan();
         List<HoaDonChiTiet> hdct = HDCT.selectByIDBan(idBan);
         
