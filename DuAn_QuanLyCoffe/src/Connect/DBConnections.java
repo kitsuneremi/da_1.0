@@ -10,7 +10,7 @@ public class DBConnections {
     public static final String PORT = "1433";
     public static final String DBNAME = "UPCOFFEE";
     public static final String USERNAME = "sa";
-    public static final String PASSWORD = "123456789sa";
+    public static final String PASSWORD = "12345";
 
     public static Connection getConnection() {
 
