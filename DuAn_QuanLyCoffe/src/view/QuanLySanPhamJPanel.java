@@ -385,14 +385,14 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         buttonGroup1.add(rdoksd);
         rdoksd.setText("Không sử dụng");
         jPanel1.add(rdoksd);
-        rdoksd.setBounds(740, 230, 110, 20);
+        rdoksd.setBounds(740, 230, 110, 28);
 
         rdosd.setBackground(new java.awt.Color(241, 241, 241));
         buttonGroup1.add(rdosd);
         rdosd.setSelected(true);
         rdosd.setText("Sử dụng");
         jPanel1.add(rdosd);
-        rdosd.setBounds(860, 230, 90, 20);
+        rdosd.setBounds(860, 230, 90, 28);
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -438,7 +438,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(tbnLamMoi);
-        tbnLamMoi.setBounds(1100, 320, 99, 34);
+        tbnLamMoi.setBounds(1100, 320, 81, 34);
 
         btndonvi.setBackground(new java.awt.Color(225, 193, 144));
         btndonvi.setText("+");
@@ -448,7 +448,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btndonvi);
-        btndonvi.setBounds(450, 320, 22, 30);
+        btndonvi.setBounds(450, 320, 19, 30);
 
         btnloaidouong.setBackground(new java.awt.Color(225, 193, 144));
         btnloaidouong.setText("+");

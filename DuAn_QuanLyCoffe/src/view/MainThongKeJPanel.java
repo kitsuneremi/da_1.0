@@ -272,7 +272,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jDateNgaybd, jDatengayKt});
 
         jPanel1.setBackground(new java.awt.Color(241, 241, 241));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Doanh Thu Sản Phẩm:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Doanh Thu Sản Phẩm:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         tblsoluong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -311,7 +311,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         );
 
         jPanel2.setBackground(new java.awt.Color(241, 241, 241));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn Hủy Theo Nhân Viên:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Đơn Hủy Theo Nhân Viên:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         tblhuydon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
