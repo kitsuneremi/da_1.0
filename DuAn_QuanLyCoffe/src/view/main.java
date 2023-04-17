@@ -25,6 +25,7 @@ public class main extends javax.swing.JFrame {
         setColorJpanel(pnTrangChu);
         showPanel(new TrangchuJPanel());
     }
+    //
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
