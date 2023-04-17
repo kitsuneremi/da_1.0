@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package View;
+package view;
 
 import Model.HoaDon;
 import Repository.Impl.HoaDonRepoImpl1;
+import View.HoadonchitietJDialog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -95,7 +96,6 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         rdoda = new javax.swing.JRadioButton();
         rdochua = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(241, 241, 241));
 
@@ -158,7 +158,7 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         );
 
         jPanel4.setBackground(new java.awt.Color(241, 241, 241));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Từ");
@@ -275,13 +275,6 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jButton1.setText("hủy đơn");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -293,22 +286,15 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -340,14 +326,12 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         try {
-            ArrayList<HoaDon> list = repo.getlist();
-            ArrayList<HoaDon> newlist = new ArrayList<>();
-            String sql = "";
+            String sql;
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
             inputFormat.setTimeZone(TimeZone.getTimeZone("Asia/Bangkok"));
             String st = "";
-            String en = "";
+            String en;
             try {
                 st = sdf.format(inputFormat.parse(String.valueOf(Jdatebatdau.getDate())));
 
@@ -356,14 +340,13 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
             }
             try {
                 en = sdf.format(inputFormat.parse(String.valueOf(Jdateketthuc.getDate())));
-
             } catch (ParseException ex) {
                 en = sdf.format(inputFormat.parse(String.valueOf(new Date())));
             }
             System.out.println(en);
             String mahd = txtsearchmahoadon.getText();
             String manv = txtsearchmanv.getText();
-            int t = 0;
+            int t;
             if (rdochua.isSelected()) {
                 t = 0;
             } else if (rdoda.isSelected()) {
@@ -376,40 +359,40 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
                     if ("".equals(manv)) {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon where ttthanhtoan = 0 and ngaytao >" + st;
+                                "select * from hoadon where ttthanhtoan = 0 and ngaytao > " + st + " and ngaytao < " + en;
                             case 1 ->
-                                "select * from hoadon where ttthanhtoan = 1 and ngaytao >" + st;
+                                "select * from hoadon where ttthanhtoan = 1 and ngaytao > " + st + " and ngaytao < " + en;
                             default ->
-                                "select * from hoadon where ngaytao >" + st;
+                                "select * from hoadon where ngaytao > " + st + " and ngaytao < " + en;
                         };
                     } else {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon where ttthanhtoan = 0 and id_nhanvien =" + manv + " and ngaytao >" + st;
+                                "select * from hoadon where ttthanhtoan = 0 and id_nhanvien ='" + manv + "' and ngaytao > " + st + " and ngaytao < " + en;
                             case 1 ->
-                                "select * from hoadon where ttthanhtoan = 1 and id_nhanvien =" + manv + " and ngaytao >" + st;
+                                "select * from hoadon where ttthanhtoan = 1 and id_nhanvien ='" + manv + "' and ngaytao > " + st + " and ngaytao < " + en;
                             default ->
-                                "select * from hoadon where id_nhanvien =" + manv + " and ngaytao >" + st;
+                                "select * from hoadon where id_nhanvien ='" + manv + "' and ngaytao > " + st + " and ngaytao < " + en;
                         };
                     }
                 } else {
                     if ("".equals(manv)) {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon where ngaytao >" + st + " and ttthanhtoan = 0";
+                                "select * from hoadon where ngaytao > " + st + " and ttthanhtoan = 0" + " and ngaytao < " + en + " and id_hoadon = '" + mahd + "'";
                             case 1 ->
-                                "select * from hoadon where ngaytao >" + st + " and ttthanhtoan = 1";
+                                "select * from hoadon where ngaytao > " + st + " and ttthanhtoan = 1" + " and ngaytao < " + en + " and id_hoadon = '" + mahd + "'";
                             default ->
-                                "select * from hoadon where ngaytao >" + st;
+                                "select * from hoadon where ngaytao > " + st + " and ngaytao < " + en + " and id_hoadon = '" + mahd + "'";
                         };
                     } else {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon where id_hoadon = " + mahd + " ngaytao >" + st + " and ttthanhtoan = 0 and manv =" + manv;
+                                "select * from hoadon where id_hoadon = '" + mahd + "' and ngaytao > " + st + " and ttthanhtoan = 0 and id_nhanvien ='" + manv + "' and ngaytao < " + en;
                             case 1 ->
-                                "select * from hoadon where id_hoadon = " + mahd + " ngaytao >" + st + " and ttthanhtoan = 1 and manv =" + manv;
+                                "select * from hoadon where id_hoadon = '" + mahd + "' and ngaytao > " + st + " and ttthanhtoan = 1 and id_nhanvien ='" + manv + "' and ngaytao < " + en;
                             default ->
-                                "select * from hoadon where id_hoadon = " + mahd + " ngaytao >" + st + " and manv =" + manv;
+                                "select * from hoadon where id_hoadon = '" + mahd + "' and ngaytao > " + st + " and id_nhanvien ='" + manv + "' and ngaytao < " + en;
                         };
                     }
                 }
@@ -427,31 +410,31 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
                     } else {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon hoadon where ttthanhtoan = 0 and id_nhanvien = " + manv;
+                                "select * from hoadon hoadon where ttthanhtoan = 0 and id_nhanvien = '" + manv + "'";
                             case 1 ->
-                                "select * from hoadon hoadon where ttthanhtoan = 1 and id_nhanvien = " + manv;
+                                "select * from hoadon hoadon where ttthanhtoan = 1 and id_nhanvien = '" + manv + "'";
                             default ->
-                                "select * from hoadon where id_nhanvien = " + manv;
+                                "select * from hoadon where id_nhanvien = '" + manv + "'";
                         };
                     }
                 } else {
                     if ("".equals(manv)) {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon where ttthanhtoan = 0 and id_hoadon = " + mahd;
+                                "select * from hoadon where ttthanhtoan = 0 and id_hoadon = '" + mahd + "'";
                             case 1 ->
-                                "select * from hoadon where ttthanhtoan = 1 and id_hoadon = " + mahd;
+                                "select * from hoadon where ttthanhtoan = 1 and id_hoadon = '" + mahd + "'";
                             default ->
-                                "select * from hoadon where id_hoadon = " + mahd;
+                                "select * from hoadon where id_hoadon = '" + mahd + "'";
                         };
                     } else {
                         sql = switch (t) {
                             case 0 ->
-                                "select * from hoadon hoadon where ttthanhtoan = 0 and id_nhanvien = " + manv + " and id_hoadon = " + mahd;
+                                "select * from hoadon hoadon where ttthanhtoan = 0 and id_nhanvien = '" + manv + "' and id_hoadon = '" + mahd + "'";
                             case 1 ->
-                                "select * from hoadon hoadon where ttthanhtoan = 1 and id_nhanvien = " + manv + " and id_hoadon = " + mahd;
+                                "select * from hoadon hoadon where ttthanhtoan = 1 and id_nhanvien = '" + manv + "' and id_hoadon = '" + mahd + "'";
                             default ->
-                                "select * from hoadon hoadon where id_nhanvien = " + manv + " and id_hoadon = " + mahd;
+                                "select * from hoadon hoadon where id_nhanvien = '" + manv + "' and id_hoadon = '" + mahd + "'";
                         };
                     }
                 }
@@ -484,27 +467,15 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         int row = tblHoaDon.getSelectedRow();
 //        HoaDon hdx = repo.findOne(tblHoaDon.getValueAt(row, 0).toString());
 //        System.out.println(hdx.getTen());
-        HoadonchitietJDialog hd = new HoadonchitietJDialog(Integer.parseInt(tblHoaDon.getValueAt(row, 0).toString()));
+        HoadonchitietJDialog hd = new HoadonchitietJDialog(tblHoaDon.getValueAt(row, 0).toString());
         hd.setVisible(true);
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void tblHoaDonHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonHuyMouseClicked
         int row = tblHoaDon.getSelectedRow();
-        HoadonchitietJDialog hd = new HoadonchitietJDialog(Integer.parseInt(tblHoaDon.getValueAt(row, 0).toString()));
+        HoadonchitietJDialog hd = new HoadonchitietJDialog(tblHoaDon.getValueAt(row, 0).toString());
         hd.setVisible(true);
     }//GEN-LAST:event_tblHoaDonHuyMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int row = tblHoaDon.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "bạn chưa chọn hóa đơn nào");
-            return;
-        } else {
-            HoaDon hd = repo.findOne(tblHoaDon.getValueAt(row, 0).toString());
-            repo.updateTttt(Integer.parseInt(tblHoaDon.getValueAt(row, 0).toString()), 0);
-            JOptionPane.showMessageDialog(this, "đã hủy đơn");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -513,7 +484,6 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
     private javax.swing.JButton btnTim;
     private javax.swing.JButton btn_lammoi;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
